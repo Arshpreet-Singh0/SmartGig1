@@ -2,7 +2,7 @@ import express, { Request, Response } from 'express';
 import dotenv from 'dotenv';
 dotenv.config();
 
-import authRouter from './routes/auth.routes'
+import authRouter from './routes/user.routes'
 const app = express();
 
 //middlewares

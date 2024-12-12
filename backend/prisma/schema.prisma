@@ -14,8 +14,45 @@ datasource db {
 }
 
 model User {
-  id       Int    @id @default(autoincrement())
-  email    String @unique
-  name     String
-  password String
+  id             Int      @id @default(autoincrement())
+  email          String   @unique
+  name           String
+  password       String
+  role           Role     @default(FREELANCER)
+  profilePicture String?
+  bio            String?
+  skills         String[]
+  rating         Float    @default(0.0) // Default rating is 0.0
+  ratingCount    Int      @default(0)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime? @updatedAt
+
+  //relations
+  projects       Project[]
+}
+
+enum Role {
+  FREELANCER
+  CLIENT
+}
+
+model Project {
+  id             Int           @id @default(autoincrement())
+  title          String
+  description    String
+  budget         Float
+  duration       String
+  skillsRequired String[]
+  status         ProjectStatus @default(OPEN)
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+  userId         Int
+  User           User          @relation(fields: [userId], references: [id])
+}
+
+enum ProjectStatus {
+  OPEN
+  IN_PROGRESS
+  COMPLETED
+  CLOSED
 }
