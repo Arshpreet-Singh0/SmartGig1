@@ -5,6 +5,8 @@ import cookieParser from 'cookie-parser';
 
 import authRouter from './routes/user.routes';
 import projectRouter from './routes/project.routes';
+import proposalRouter from './routes/proposal.routes';
+
 const app = express();
 
 //middlewares
@@ -15,6 +17,7 @@ app.use(cookieParser());
 
 app.use('/api/v1/user', authRouter);
 app.use('/api/v1/project', projectRouter);
+app.use('/api/v1/proposal', proposalRouter);
 
 const PORT = process.env.PORT || 8080;
 

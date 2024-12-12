@@ -14,21 +14,22 @@ datasource db {
 }
 
 model User {
-  id             Int      @id @default(autoincrement())
-  email          String   @unique
+  id             Int       @id @default(autoincrement())
+  email          String    @unique
   name           String
   password       String
-  role           Role     @default(FREELANCER)
+  role           Role      @default(FREELANCER)
   profilePicture String?
   bio            String?
   skills         String[]
-  rating         Float    @default(0.0) // Default rating is 0.0
-  ratingCount    Int      @default(0)
-  createdAt      DateTime @default(now())
+  rating         Float     @default(0.0) // Default rating is 0.0
+  ratingCount    Int       @default(0)
+  createdAt      DateTime  @default(now())
   updatedAt      DateTime? @updatedAt
 
   //relations
-  projects       Project[]
+  projects  Project[]
+  proposals Proposal[]
 }
 
 enum Role {
@@ -47,7 +48,11 @@ model Project {
   createdAt      DateTime      @default(now())
   updatedAt      DateTime      @updatedAt
   userId         Int
-  User           User          @relation(fields: [userId], references: [id])
+
+  //realtions
+  User User @relation(fields: [userId], references: [id])
+
+  Proposal Proposal[]
 }
 
 enum ProjectStatus {
@@ -55,4 +60,26 @@ enum ProjectStatus {
   IN_PROGRESS
   COMPLETED
   CLOSED
+}
+
+model Proposal {
+  id               Int            @id @default(autoincrement())
+  coverLetter      String
+  proposedBudget   Float
+  proposedTimeline String
+  status           ProposalStatus @default(SUBMITTED)
+  createdAt        DateTime       @default(now())
+  updatedAt        DateTime       @updatedAt
+
+  // Relations
+  project      Project @relation(fields: [projectId], references: [id])
+  projectId    Int
+  freelancer   User    @relation(fields: [freelancerId], references: [id])
+  freelancerId Int
+}
+
+enum ProposalStatus {
+  SUBMITTED
+  ACCEPTED
+  REJECTED
 }

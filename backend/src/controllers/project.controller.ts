@@ -60,4 +60,16 @@ export const updateStatus = async(req:Request, res:Response):Promise<void>=>{
     } catch (error) {
         console.log(error); 
     }
+};
+
+export const getProject = async(req:Request, res:Response):Promise<void>=>{
+    try {
+        const projects = await prisma.project.findMany({});
+
+        res.status(200).json({
+            projects,
+        });
+    } catch (error) {
+        console.log(error);
+    }
 }
