@@ -1,5 +1,6 @@
 import HeroSection from "./HeroSection"
 import HowItWorks from "./HowItWorks"
+import LatestWork from "./LatestWork"
 import WhyChoosUs from "./WhyChoosUs"
 
 const HomePage = () => {
@@ -8,6 +9,7 @@ const HomePage = () => {
    <HeroSection />
    <HowItWorks />
    <WhyChoosUs />
+   <LatestWork />
    </>
   )
 }
