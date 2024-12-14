@@ -1,3 +1,4 @@
+import Footer from "../Footer"
 import HeroSection from "./HeroSection"
 import HowItWorks from "./HowItWorks"
 import LatestWork from "./LatestWork"
@@ -10,6 +11,7 @@ const HomePage = () => {
    <HowItWorks />
    <WhyChoosUs />
    <LatestWork />
+   <Footer />
    </>
   )
 }

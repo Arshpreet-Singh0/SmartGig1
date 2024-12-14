@@ -14,7 +14,7 @@ const LatestWork = () => {
             </h1>
           </div>
           <div className="flex gap-5">
-            <div className="flex justify-center items-center w-12 h-12  rounded-full shadow">
+            <div className="flex justify-center items-center w-12 h-12  rounded-full shadow dark:shadow-white">
             <ArrowLeft className="text-blue-100"/>
             </div>
             <div className="flex justify-center items-center w-12 h-12 shadow rounded-full bg-blue-100">
@@ -24,7 +24,7 @@ const LatestWork = () => {
         </div>
 
         <div className="flex justify-between h-72 mt-12">
-          <div className="w-[300px] shadow rounded-3xl p-2">
+          <div className="w-[300px] shadow rounded-3xl p-2 dark:shadow-white">
             <div className="flex justify-center">
               <img src="/src/assets/MaterialUi.png" alt="" />
             </div>
@@ -37,15 +37,15 @@ const LatestWork = () => {
             </div>
             <div className="flex p-4">
               <div className="w-1/2 text-center text-[#252525]">
-                <h3 className="text-xl">Highest bid</h3>
-                <h2 className="text-2xl">$500</h2>
+                <h3 className="text-xl dark:text-white opacity-80">Highest bid</h3>
+                <h2 className="text-2xl dark:text-white opacity-80">$500</h2>
               </div>
               <div className="flex justify-center items-center flex-1">
                 <h2 className="text-blue-100 underline">Apply now</h2>
               </div>
             </div>
           </div>
-          <div className="w-[300px] shadow rounded-3xl p-2">
+          <div className="w-[300px] shadow rounded-3xl p-2 dark:shadow-white">
             <div className="flex justify-center">
               <img src="/src/assets/CanvaApp.png" alt="" />
             </div>
@@ -58,15 +58,15 @@ const LatestWork = () => {
             </div>
             <div className="flex p-4">
               <div className="w-1/2 text-center text-[#252525]">
-                <h3 className="text-xl">Highest bid</h3>
-                <h2 className="text-2xl">$500</h2>
+                <h3 className="text-xl dark:text-white opacity-80">Highest bid</h3>
+                <h2 className="text-2xl dark:text-white opacity-80">$500</h2>
               </div>
               <div className="flex justify-center items-center flex-1">
                 <h2 className="text-blue-100 underline">Apply now</h2>
               </div>
             </div>
           </div>
-          <div className="w-[300px] shadow rounded-3xl p-2">
+          <div className="w-[300px] shadow rounded-3xl p-2 dark:shadow-white">
             <div className="flex justify-center">
               <img src="/src/assets/Account.png" alt="" />
             </div>
@@ -77,10 +77,10 @@ const LatestWork = () => {
                 level
               </p>
             </div>
-            <div className="flex p-4">
+            <div className="flex p-4 ">
               <div className="w-1/2 text-center text-[#252525]">
-                <h3 className="text-xl">Highest bid</h3>
-                <h2 className="text-2xl">$300</h2>
+                <h3 className="text-xl dark:text-white opacity-80">Highest bid</h3>
+                <h2 className="text-2xl dark:text-white opacity-80">$300</h2>
               </div>
               <div className="flex justify-center items-center flex-1">
                 <h2 className="text-blue-100 underline">Apply now</h2>
