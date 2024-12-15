@@ -2,6 +2,7 @@ import express, { Request, Response } from 'express';
 import dotenv from 'dotenv';
 dotenv.config();
 import cookieParser from 'cookie-parser';
+import cors from 'cors';
 
 import authRouter from './routes/user.routes';
 import projectRouter from './routes/project.routes';
@@ -12,6 +13,11 @@ const app = express();
 //middlewares
 app.use(express.json());
 app.use(cookieParser());
+app.use(cors({
+    origin : "http://localhost:5173",
+    credentials : true,
+    methods : ["get", "post", "put", "patch"],
+}))
 
 //api's
 
