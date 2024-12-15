@@ -1,5 +1,5 @@
 import { Button } from "../button/Button";
-import Navbar from "../navbar/Navbar";
+import Navbar from "../navbar/LangingPageNavbar";
 
 const HeroSection = () => {
   return (

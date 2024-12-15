@@ -1,56 +1,70 @@
-import { Facebook, Instagram, Mail, MapPin, PhoneCall, Twitter} from "lucide-react";
+import { Facebook, Instagram, Mail, MapPin, PhoneCall, Twitter } from "lucide-react";
 
 const Footer = () => {
   return (
-    <div className="flex flex-col justify-center h-[400px] dark:bg-black dark:text-white">
-      <div className="flex h-full w-full pt-20 border-">
-        <div className="flex flex-col justify-center items-center w-1/4 border-t">
-          <div className="w-1/2">
+    <footer className="flex flex-col items-center py-10 dark:bg-black dark:text-white border-t mt-20">
+      <div className="container mx-auto px-5">
+        {/* Top Section */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+          {/* Company Info */}
+          <div className="flex flex-col items-center lg:items-start">
             <h1 className="text-3xl font-bold text-blue-100 mb-3">Smart Gig</h1>
-            <p className="text-[#252525] dark:text-white">
-              Powerful Freelance Marketplace System with ability to change the
-              Users (Freelancers & Clients)
+            <p className="text-gray-600 dark:text-gray-300 text-center lg:text-left">
+              Powerful Freelance Marketplace System with ability to connect
+              Freelancers & Clients seamlessly.
             </p>
             <div className="flex gap-5 mt-4">
-            <Instagram className=""/>
-            <Twitter />
-            <Facebook />
+              <Instagram className="w-6 h-6 text-gray-600 dark:text-gray-300 hover:text-blue-500 transition" />
+              <Twitter className="w-6 h-6 text-gray-600 dark:text-gray-300 hover:text-blue-400 transition" />
+              <Facebook className="w-6 h-6 text-gray-600 dark:text-gray-300 hover:text-blue-700 transition" />
+            </div>
+          </div>
+
+          {/* For Clients */}
+          <div className="flex flex-col items-center lg:items-start">
+            <h2 className="text-xl font-semibold mb-5">For Clients</h2>
+            <ul className="text-gray-600 dark:text-gray-300 space-y-2">
+              <li className="hover:text-blue-500 transition cursor-pointer">Find Freelancers</li>
+              <li className="hover:text-blue-500 transition cursor-pointer">Post Project</li>
+              <li className="hover:text-blue-500 transition cursor-pointer">Refund Policy</li>
+              <li className="hover:text-blue-500 transition cursor-pointer">Privacy Policy</li>
+            </ul>
+          </div>
+
+          {/* For Freelancers */}
+          <div className="flex flex-col items-center lg:items-start">
+            <h2 className="text-xl font-semibold mb-5">For Freelancers</h2>
+            <ul className="text-gray-600 dark:text-gray-300 space-y-2">
+              <li className="hover:text-blue-500 transition cursor-pointer">Find Work</li>
+              <li className="hover:text-blue-500 transition cursor-pointer">Create Account</li>
+              <li className="hover:text-blue-500 transition cursor-pointer">Login</li>
+              <li className="hover:text-blue-500 transition cursor-pointer">Help & Support</li>
+            </ul>
+          </div>
+
+          {/* Contact Us */}
+          <div className="flex flex-col items-center lg:items-start">
+            <h2 className="text-xl font-semibold mb-5">Contact Us</h2>
+            <div className="text-gray-600 dark:text-gray-300 space-y-4">
+              <p className="flex items-center">
+                <MapPin className="w-5 h-5 mr-3" /> India
+              </p>
+              <p className="flex items-center">
+                <PhoneCall className="w-5 h-5 mr-3" /> +91 8888800000
+              </p>
+              <p className="flex items-center">
+                <Mail className="w-5 h-5 mr-3" /> arshsomal100@gmail.com
+              </p>
             </div>
           </div>
         </div>
-        <div className="flex flex-col justify-center items-center w-1/4 border-t">
-          <div className="w-1/2">
-            <h1 className="text-xl mb-5">For Client</h1>
-            <ul className="text-[#252525] dark:text-white">
-                <li>Find Freelancers</li>
-                <li>Post Project</li>
-                <li>Refund Policy</li>
-                <li>Privacy Policy</li>
-            </ul>
-          </div>
-        </div>
-        <div className="flex flex-col justify-center items-center w-1/4 border-t">
-          <div className="w-1/2">
-            <h1 className="text-xl mb-5">For Freelancers</h1>
-            <ul className="text-[#252525] dark:text-white">
-                <li>Find Work</li>
-                <li>Create Account</li>
-                <li>Login</li>
-                <li>Help & Support</li>
-            </ul>
-          </div>
-        </div>
-      
-        <div className="flex flex-col justify-center items-center w-1/4 border-t">
-          <div className="w-1/2 h-[172px]">
-                <h1 className="text-xl">Contact Us</h1>
-                <p className="flex mt-4"><MapPin className="mr-4"/> India</p>
-                <p className="flex mt-4"><PhoneCall className="mr-4"/> +91 8888800000</p>
-                <p className="flex mt-4"><Mail className="mr-4"/> arshsomal100@gmail.com</p>
-          </div>
+
+        {/* Bottom Section */}
+        <div className="mt-10 border-t pt-5 text-center text-sm text-gray-500 dark:text-gray-400">
+          &copy; {new Date().getFullYear()} Smart Gig. All Rights Reserved.
         </div>
       </div>
-    </div>
+    </footer>
   );
 };
 

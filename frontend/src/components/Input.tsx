@@ -1,13 +1,13 @@
 import React from "react";
 
 interface InputProps { 
-    placeholder: string; 
+    placeholder?: string; 
     reference?: any,
-    type : string,
+    type? : string,
     classname? : string,
-    name : string,
-    value : string,
-    onChange : (e: React.ChangeEvent<HTMLInputElement>) => void;
+    name? : string,
+    value? : string,
+    onChange? : (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export function Input({placeholder, reference, type, classname, name, value, onChange}: InputProps) {

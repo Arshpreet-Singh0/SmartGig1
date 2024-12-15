@@ -17,8 +17,8 @@ interface formProps {
 }
 const Form = ({ type, onSubmit, input, onChange }: formProps) => {
   return (
-    <div className="w-screen h-screen flex justify-center items-center">
-      <div className="flex w-[880px] h-[645px] shadow rounded-xl">
+    <div className="flex justify-center items-center pt-10 dark:bg-black">
+      <div className="flex w-[880px] h-[645px] shadow rounded-xl dark:shadow-white">
         <div
           className="w-1/2 bg-contain rounded-l-xl p-10 pt-16 hidden md:block"
           style={{ backgroundImage: "url(/src/assets/auth.png)" }}
