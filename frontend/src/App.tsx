@@ -1,19 +1,26 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import {createBrowserRouter, RouterProvider } from "react-router-dom"
 import LandingPage from "./pages/LandingPage"
 import SignupPage from "./pages/SignupPage"
 import SigninPage from "./pages/SigninPage"
+import Page from "./pages/Page";
+
+const routes = createBrowserRouter([
+  {
+    path: "/",
+    element: <Page />,
+    children: [
+      { path: "/", element: <LandingPage /> },
+          { path: "/signin", element: <SigninPage /> },
+          { path: "/signup", element: <SignupPage /> },
+    ],
+  },
+]);
 
 function App() {
 
   return (
     <>
-      <Router>
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/signup" element={<SignupPage />} />
-          <Route path="/signin" element={<SigninPage />} />
-        </Routes>
-      </Router>
+      <RouterProvider router={routes}/>
     </>
   )
 }

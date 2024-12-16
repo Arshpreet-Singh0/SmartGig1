@@ -39,10 +39,13 @@ const Form = ({ type, onSubmit, input, onChange }: formProps) => {
         </div>
         <div className="flex-1 pt-6 pb-8 mt-5">
           <div className="h-[333px] px-10 py-5">
-            <h4 className="text-2xl text-[#222325] mb-2">
-              Sign in to your account
+            <h4 className="text-2xl text-[#222325] mb-2 dark:text-white">
+              {
+                type==="signup" ? "Create you account" : "Sign in to your account"
+              }
+              
             </h4>
-            <p className="text-sm opacity-75">
+            <p className="text-sm opacity-75 dark:text-white">
               {type === "signup" ? (
                 <p>
                   Already have an account?

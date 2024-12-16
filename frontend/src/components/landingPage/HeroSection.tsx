@@ -4,9 +4,9 @@ import Navbar from "../navbar/LangingPageNavbar";
 const HeroSection = () => {
   return (
     <div
-      className="w-full h-[70vh] pt-6 bg-[#F1FAFA] dark:bg-black dark:text-white"
+      className="w-full h-[70vh] bg-[#F1FAFA] dark:bg-black dark:text-white"
     >
-      <Navbar />
+      {/* <Navbar /> */}
 
       <div className="flex">
         <div className="flex flex-col justify-center items-end w-1/2">
