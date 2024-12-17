@@ -3,6 +3,8 @@ import LandingPage from "./pages/LandingPage"
 import SignupPage from "./pages/SignupPage"
 import SigninPage from "./pages/SigninPage"
 import Page from "./pages/Page";
+import ProfilePage from "./pages/ProfilePage";
+import NotFound from "./pages/NotFound";
 
 const routes = createBrowserRouter([
   {
@@ -12,6 +14,8 @@ const routes = createBrowserRouter([
       { path: "/", element: <LandingPage /> },
           { path: "/signin", element: <SigninPage /> },
           { path: "/signup", element: <SignupPage /> },
+          { path: "/profile", element: <ProfilePage />},
+          { path: "*", element: <NotFound />},
     ],
   },
 ]);

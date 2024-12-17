@@ -3,7 +3,7 @@ import type { RootState } from './store';
 
 // Define a type for the user
 export interface User {
-  _id?: string;
+  id?: string;
   name?: string;
   email?: string;
 
@@ -17,7 +17,7 @@ export interface UserState {
 // Define the initial state using that type
 const initialState: UserState = {
   user: {
-    _id: '',
+    id: '',
     name: '',
     email : ''
   },
@@ -33,7 +33,7 @@ export const authSlice = createSlice({
     },
     clearUser: (state) => {
       state.user = {
-        _id: '',
+        id: '',
         name: '',
         email : ''
       };
@@ -43,7 +43,7 @@ export const authSlice = createSlice({
 // Export actions
 export const { setUser, clearUser } = authSlice.actions;
 
-export const isUserLoggedIn = (state: RootState) => !!state.auth.user._id;
+export const isUserLoggedIn = (state: RootState) => !!state.auth.user.id;
 
 // Selector example
 export const selectUser = (state: RootState) => state.auth.user;

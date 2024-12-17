@@ -84,7 +84,12 @@ export const signin = async (req: Request, res: Response): Promise<void> => {
     const token = jwt.sign({ userId: user.id }, secretKey, {
       expiresIn: "7d",
     });
-    
+
+    const constructedUser = {
+      id: user.id,
+      name: user.name,
+      email: user.email,
+    }
 
     res
       .status(200)
@@ -96,6 +101,7 @@ export const signin = async (req: Request, res: Response): Promise<void> => {
       .json({
         message: `Welcome back ${user.name}`,
         success: true,
+        user : constructedUser,
       });
   } catch (error) {
     console.log(error);
