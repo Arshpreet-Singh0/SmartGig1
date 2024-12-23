@@ -5,6 +5,7 @@ import SigninPage from "./pages/SigninPage"
 import Page from "./pages/Page";
 import ProfilePage from "./pages/ProfilePage";
 import NotFound from "./pages/NotFound";
+import JobPage from "./pages/ProjectPage";
 
 const routes = createBrowserRouter([
   {
@@ -15,6 +16,7 @@ const routes = createBrowserRouter([
           { path: "/signin", element: <SigninPage /> },
           { path: "/signup", element: <SignupPage /> },
           { path: "/profile", element: <ProfilePage />},
+          { path: "/projects", element: <JobPage />},
           { path: "*", element: <NotFound />},
     ],
   },

@@ -10,6 +10,9 @@ export default {
       colors : {
         blue : {
           100 : "#1E88E5"
+        },
+        black : {
+          100 : "#171717"
         }
       }
     },

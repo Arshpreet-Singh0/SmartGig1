@@ -47,7 +47,7 @@ const Navbar = () => {
       </div>
       <ul className="flex items-center gap-16 mr-8">
         <li className="opacity-80 hover:opacity-100 dark:text-white text-lg cursor-pointer"><Link to="/">Home</Link></li>
-        <li className="opacity-80 hover:opacity-100 dark:text-white text-lg cursor-pointer">Jobs</li>
+        <li className="opacity-80 hover:opacity-100 dark:text-white text-lg cursor-pointer"><Link to="/projects">Project</Link></li>
         {isUserExist ? (
           <>
           <li className="opacity-80 hover:opacity-100 dark:text-white text-lg cursor-pointer">Messages</li>
