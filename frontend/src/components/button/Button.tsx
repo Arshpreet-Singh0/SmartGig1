@@ -13,7 +13,7 @@ interface ButtonProps {
 const variantClasses = {
   primary: "bg-blue-100 text-white",
   secondary: "bg-purple-200 text-purple-600",
-  outline: "border border-blue-100 text-black",
+  outline: "border border-black",
 };
 
 const defaultStyles =
