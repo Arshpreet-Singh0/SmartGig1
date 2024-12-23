@@ -45,6 +45,7 @@ model Project {
   duration       String
   skillsRequired String[]
   status         ProjectStatus @default(OPEN)
+  experienceLevel ExperienceLevel @default(BEGINNER)
   createdAt      DateTime      @default(now())
   updatedAt      DateTime      @updatedAt
   userId         Int
@@ -60,6 +61,12 @@ enum ProjectStatus {
   IN_PROGRESS
   COMPLETED
   CLOSED
+}
+
+enum ExperienceLevel {
+  BEGINNER
+  INTERMEDIATE
+  EXPERT
 }
 
 model Proposal {

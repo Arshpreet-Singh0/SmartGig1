@@ -64,7 +64,14 @@ export const updateStatus = async(req:Request, res:Response):Promise<void>=>{
 
 export const getProject = async(req:Request, res:Response):Promise<void>=>{
     try {
-        const projects = await prisma.project.findMany({});
+        const page = req.params.page;
+        const projects = await prisma.project.findMany({
+            skip : (Number(page) - 1) * 10,
+            take : 10,
+            orderBy : {
+                createdAt : "desc",
+            }
+        });
 
         res.status(200).json({
             projects,
