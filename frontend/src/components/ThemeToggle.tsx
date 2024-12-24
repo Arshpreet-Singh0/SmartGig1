@@ -25,7 +25,7 @@ const ThemeToggle = () => {
   return (
     <button
       onClick={toggleTheme}
-      className="p-2 text-black dark:text-white"
+      className="p-2 text-black text-white"
     >
       <SunMoon />
     </button>

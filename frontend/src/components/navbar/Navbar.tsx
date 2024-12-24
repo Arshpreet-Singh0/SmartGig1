@@ -32,9 +32,9 @@ const Navbar = () => {
   const toggleDropdown = () => setDropdownOpen(!dropdownOpen);
 
   return (
-    <div className="flex items-center gap-20 h-20 shadow dark:bg-black bg-[#6155E2] sticky top-0 z-50">
+    <div className="flex items-center gap-20 h-20 shadow dark:bg-black bg-[#1f1f1f] sticky top-0 z-50">
       <div className="flex items-center justify-center gap-40 w-1/2 ml-32">
-        <img src="/src/assets/logo.png" alt="logo" className="w-36 h-32" />
+        <img src="/src/assets/smartgig-removebg-preview (1).png" alt="logo" className="w-56 h-32" />
         <div className="flex items-center">
           <Input
             placeholder="What service are you looking for today?"
@@ -46,11 +46,11 @@ const Navbar = () => {
         </div>
       </div>
       <ul className="flex items-center gap-16 mr-8">
-        <li className="opacity-80 hover:opacity-100 dark:text-white text-lg cursor-pointer"><Link to="/">Home</Link></li>
-        <li className="opacity-80 hover:opacity-100 dark:text-white text-lg cursor-pointer"><Link to="/projects">Project</Link></li>
+        <li className="opacity-80 hover:opacity-100 text-white text-lg cursor-pointer"><Link to="/">Home</Link></li>
+        <li className="opacity-80 hover:opacity-100 text-white text-lg cursor-pointer"><Link to="/projects">Project</Link></li>
         {isUserExist ? (
           <>
-          <li className="opacity-80 hover:opacity-100 dark:text-white text-lg cursor-pointer">Messages</li>
+          <li className="opacity-80 hover:opacity-100 text-white text-lg cursor-pointer">Messages</li>
           <li>
             <div ref={dropdownRef} className="relative">
               <img onClick={toggleDropdown} src="https://media.istockphoto.com/id/1682296067/photo/happy-studio-portrait-or-professional-man-real-estate-agent-or-asian-businessman-smile-for.jpg?s=612x612&w=0&k=20&c=9zbG2-9fl741fbTWw5fNgcEEe4ll-JegrGlQQ6m54rg=" alt='' className="h-12 rounded-full cursor-pointer"/>
@@ -70,8 +70,8 @@ const Navbar = () => {
           </>
         ) : (
           <>
-            <li className="opacity-80 hover:opacity-100 dark:text-white text-lg cursor-pointer"><Link to="/signin">Sign in</Link></li>
-            <Button text="Join" variant="outline" className="dark:text-white border hover:bg-blue-100 duration-300 text-lg " onClick={() => navigate('/signup')} />
+            <li className="opacity-80 hover:opacity-100 text-white text-lg cursor-pointer"><Link to="/signin">Sign in</Link></li>
+            <Button text="Join" variant="outline" className="text-white border hover:bg-blue-100 duration-300 text-lg " onClick={() => navigate('/signup')} />
           </>
         )}
         <ThemeToggle />
