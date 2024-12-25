@@ -2,7 +2,7 @@ import { Progress, Rate } from "antd";
 import { CheckCircleOutlined } from "@ant-design/icons";
 import { Clock4, MessageSquareMore, Star } from "lucide-react";
 
-const PerformanceStatics = () => {
+const PerformanceStatics = ({profile}:any) => {
   return (
     <div className="p-8 bg-gray-100 w-[80%] mx-auto">
       <div className="py-5">
@@ -13,7 +13,7 @@ const PerformanceStatics = () => {
           <div className="flex justify-between items-center">
             <div>
               <p className="text-sm text-gray-500">Project Completion</p>
-              <p className="text-3xl font-semibold">98%</p>
+              <p className="text-3xl font-semibold">{profile?.successRate}%</p>
             </div>
             <div className="flex items-center justify-center w-9 h-9 bg-green-100 rounded-full">
               <CheckCircleOutlined className="text-green-600 font-bold text-xl" />
@@ -22,7 +22,7 @@ const PerformanceStatics = () => {
           <div>
           </div>
           <Progress
-            percent={98}
+            percent={profile?.successRate}
             status="active"
             strokeColor={"#21C55D"}
             showInfo={false}
@@ -33,7 +33,7 @@ const PerformanceStatics = () => {
           <div className="flex justify-between items-center">
             <div>
               <p className="text-sm text-gray-500">Project Completion</p>
-              <p className="text-3xl font-semibold">95%</p>
+              <p className="text-3xl font-semibold">{profile?.successRate}%</p>
             </div>
             <div className="flex items-center justify-center w-9 h-9 bg-blue-200 rounded-full">
               <Clock4 className="text-blue-100 font-bold text-xl" />
@@ -42,7 +42,7 @@ const PerformanceStatics = () => {
           <div>
           </div>
           <Progress
-            percent={95}
+            percent={profile?.successRate}
             status="active"
             strokeColor={"#3B81F6"}
             showInfo={false}
@@ -53,7 +53,7 @@ const PerformanceStatics = () => {
           <div className="flex justify-between items-center">
             <div>
               <p className="text-sm text-gray-500">Client Satisfaction</p>
-              <p className="text-3xl font-semibold">4.9/5</p>
+              <p className="text-3xl font-semibold">{profile?.rating}/5</p>
             </div>
             <div className="flex items-center justify-center w-9 h-9 bg-yellow-200 rounded-full">
               <Star className="text-yellow-600 font-bold text-xl" />
@@ -62,8 +62,8 @@ const PerformanceStatics = () => {
           <div>
           </div>
           <p className="flex items-center text-gray-500 mt-3">
-          <Rate allowHalf defaultValue={4.8} />
-          (127 reviews)
+          <Rate allowHalf defaultValue={profile?.rating} />
+          ({profile?.reviews} reviews)
 
           </p>
         </div>
@@ -77,7 +77,7 @@ const PerformanceStatics = () => {
               <MessageSquareMore className="text-purple-600 font-bold text-xl" />
             </div>
           </div>
-          <p className="text-gray-500 mt-3">Response Time : 2 hour</p>
+          <p className="text-gray-500 mt-3">Response Time : {profile?.responseTime} hour</p>
           <div>
           </div>
         </div>
