@@ -108,53 +108,98 @@ export const signin = async (req: Request, res: Response): Promise<void> => {
   }
 };
 
-export const updateProfile = async (
-  req: Request,
-  res: Response
-): Promise<void> => {
+
+export const updateUserProfile = async (req: Request, res: Response): Promise<void> => {
+  const userId = req.userId;
+  const {
+    name,
+    about,
+    location,
+    responseTime,
+    imageUrl,
+    role,
+    profilePicture,
+    education,
+    skills
+  } = req.body;
+
   try {
-    const { name, bio, skills } = req.body;
-
-    const userId = req.userId;
-
-    const user = await prisma.user.findFirst({
-      where: {
-        id: Number(userId),
-      },
+    const userExists = await prisma.user.findUnique({
+      where: { id: Number(userId) },
     });
-    if (!user) {
-      res.status(400).json({
-        messgae: "User not found",
-        success: false,
-      });
+
+    if (!userExists) {
+      res.status(404).send({ message: "User not found" });
       return;
     }
 
     const updatedUser = await prisma.user.update({
-      where: {
-        id: Number(userId),
-      },
+      where: { id: Number(userId) },
       data: {
-        name: name || user.name,
-        bio: bio || user.bio,
-        skills: skills || user.skills,
+        name,
+        about,
+        location,
+        role,
+        responseTime,
+        imageUrl,
+        education: {
+          deleteMany: {}, 
+          create: education // Add new education records
+        },
+        skills: {
+          deleteMany: {},
+          create: skills.map((skill : any) => ({
+            domain: skill.domain,
+            skills: { set: skill.skills } // Using 'set' for array fields
+          }))
+        }
       },
       select : {
         id : true,
         name : true,
+        about : true,
+        location : true,
+        role : true,
         email : true,
-        bio : true,
-        skills : true,
-        profilePicture : true
-      }
+        responseTime : true,
+        imageUrl : true,
+        education : true,
+        skills : true
+      },
+      
     });
 
-    res.status(200).json({
-      message: "User updated successfully",
-      success: true,
-      data: updatedUser,
-    });
+    res.status(200).json(updatedUser);
   } catch (error) {
     console.log(error);
+    res.status(500).send({ message: "Error updating user profile", error });
   }
 };
+
+export const getUserProfile = async (req:Request, res:Response)=>{
+  const userId = req.params.id;
+
+  try {
+    const user = await prisma.user.findUnique({
+      where: { id: Number(userId) },
+      select: {
+        id: true,
+        name: true,
+        about: true,
+        location: true,
+        role: true,
+        email : true,
+        responseTime: true,
+        imageUrl: true,
+        education: true,
+        skills: true
+    },
+  });
+
+  res.status(200).json({user});
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({ message: "Error updating user profile", error });
+  }
+
+}

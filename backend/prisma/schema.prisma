@@ -14,44 +14,72 @@ datasource db {
 }
 
 model User {
-  id             Int       @id @default(autoincrement())
-  email          String    @unique
-  name           String
-  password       String
-  role           Role      @default(FREELANCER)
-  profilePicture String?
-  bio            String?
-  skills         String[]
-  rating         Float     @default(0.0) // Default rating is 0.0
-  ratingCount    Int       @default(0)
-  createdAt      DateTime  @default(now())
-  updatedAt      DateTime? @updatedAt
+  id                Int       @id @default(autoincrement())
+  email             String    @unique
+  name              String
+  password          String
+  role              String?
+  profilePicture    String?
+  about             String?
+  location          String?
+  responseTime      String?
+  imageUrl          String?
+  projectsCompleted Int       @default(0)
+  rating            Float     @default(0.0) // Default rating is 0.0
+  ratingCount       Int       @default(0)
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime? @updatedAt
 
   //relations
   projects  Project[]
   proposals Proposal[]
+  education Education[]
+  skills    Skills[]
+  languages Languages[]
 }
 
-enum Role {
-  FREELANCER
-  CLIENT
+model Education {
+  id          Int    @id @default(autoincrement())
+  institution String
+  degree      String
+  startYear   String
+  endYear     String
+  User        User?  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId      Int?
+}
+
+model Skills {
+  id     Int      @id @default(autoincrement())
+  domain String
+  skills String[]
+
+  User   User? @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId Int?
+}
+
+model Languages {
+  id       Int    @id @default(autoincrement())
+  language String
+  level    String
+  User     User?  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId   Int?
 }
 
 model Project {
-  id             Int           @id @default(autoincrement())
-  title          String
-  description    String
-  budget         Float
-  duration       String
-  skillsRequired String[]
-  status         ProjectStatus @default(OPEN)
+  id              Int             @id @default(autoincrement())
+  title           String
+  description     String
+  budget          Float
+  duration        String
+  skillsRequired  String[]
+  status          ProjectStatus   @default(OPEN)
   experienceLevel ExperienceLevel @default(BEGINNER)
-  createdAt      DateTime      @default(now())
-  updatedAt      DateTime      @updatedAt
-  userId         Int
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
+  userId          Int
 
   //realtions
-  User User @relation(fields: [userId], references: [id])
+  User User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   Proposal Proposal[]
 }
@@ -81,7 +109,7 @@ model Proposal {
   // Relations
   project      Project @relation(fields: [projectId], references: [id])
   projectId    Int
-  freelancer   User    @relation(fields: [freelancerId], references: [id])
+  freelancer   User    @relation(fields: [freelancerId], references: [id], onDelete: Cascade)
   freelancerId Int
 }
 
