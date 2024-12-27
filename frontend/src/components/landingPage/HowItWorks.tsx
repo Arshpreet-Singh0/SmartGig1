@@ -1,38 +1,83 @@
+import {
+  BriefcaseBusiness,
+  ChevronRight,
+  Clipboard,
+  PersonStanding,
+} from "lucide-react";
+import React from "react";
+import { Button } from "../button/Button";
 
 const HowItWorks = () => {
   return (
-    <div className="dark:bg-black">
-    <div className="flex justify-between w-[70%] h-[225px] shadow mx-auto relative -top-5 bg-white p-6 dark:bg-[#161617] dark:text-white rounded-md">
-        <div className="w-[243px]">
-          <div className="flex justify-center">
-            <img src="/src/assets/Group1.png" alt="" className="w-24"/>
-          </div>
-          <div className="text-center mt-2">
-            <h1 className="text-xl">Create Account</h1>
-            <p className="text-[#9D9D9D]">First you have to create a account  here</p>
-          </div>
-        </div>
-        <div className="w-[243px]">
-          <div className="flex justify-center">
-            <img src="/src/assets/Group2.png" alt="" className="w-24"/>
-          </div>
-          <div className="text-center mt-2">
-            <h1 className="text-xl">Search work</h1>
-            <p className="text-[#9D9D9D]">Search the best freelance work here</p>
-          </div>
-        </div>
-        <div className="w-[243px]">
-          <div className="flex justify-center">
-            <img src="/src/assets/Group3.png" alt="" className="w-24"/>
-          </div>
-          <div className="text-center mt-2">
-            <h1 className="text-xl">Save and apply</h1>
-            <p className="text-[#9D9D9D]">Apply or save and start your work</p>
-          </div>
-        </div>
-    </div>
-    </div>
-  )
-}
+    <div className="text-white pb-20">
+      <h1 className="text-4xl text-center font-semibold">How It Works</h1>
+      <p className="text-gray-400 text-md text-center mt-4">
+        Simple steps to start your journey with FreelanceHub - whether you're
+        hiring or looking <br /> for work.
+      </p>
 
-export default HowItWorks
+      <div className="flex justify-between w-[70%] h-[15rem] mx-auto mt-10 px-14">
+        <Card
+          icon={<Clipboard className="text-[#6366F1]" />}
+          heading="Post a Project"
+          description="Describe your project in detail, including requirements, timeline, and budget."
+          visible
+        />
+        <Card
+          icon={<BriefcaseBusiness className="text-[#6366F1]" />}
+          heading="Submit Proposals"
+          description="Browse available projects and submit your best proposal to win the work."
+          visible
+        />
+        <Card
+          icon={<PersonStanding className="text-[#6366F1]" />}
+          heading="Collaborate
+"
+          description="Work together efficiently with secure payments and communication tools."
+          visible
+        />
+      </div>
+
+      <div className="flex justify-center mt-12">
+        <Button
+          text="Get Started Now"
+          variant="secondary"
+          className="py-4 px-8"
+        />
+      </div>
+    </div>
+  );
+};
+
+export default HowItWorks;
+
+interface props {
+  icon: React.ReactElement;
+  heading: string;
+  description: string;
+  visible?: boolean;
+}
+export const Card: React.FC<props> = ({
+  icon,
+  heading,
+  description,
+  visible,
+}) => {
+  return (
+    <div>
+      <div className={`rounded-lg shadow-md p-6 w-[21.5rem] ${visible ? 'h-[15rem]' : 'h-[14rem]'} border border-gray-700`}>
+        <div className="flex justify-center items-center rounded-lg bg-[#282848] h-12 w-12 ">
+          {icon}
+        </div>
+
+        <h3 className="text-xl mt-3">{heading}</h3>
+        <p className="mt-4 text-gray-400">{description}</p>
+        {visible && (
+          <p className="flex items-center mt-4 text-sm text-[#6366F1]">
+            Learn More <ChevronRight className="ml-2" width={18} />
+          </p>
+        )}
+      </div>
+    </div>
+  );
+};

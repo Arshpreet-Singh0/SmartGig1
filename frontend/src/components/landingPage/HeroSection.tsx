@@ -1,49 +1,24 @@
 import { Button } from "../button/Button";
-import Navbar from "../navbar/LangingPageNavbar";
-
+import { useNavigate } from "react-router-dom";
 const HeroSection = () => {
+  const navigate = useNavigate();
   return (
-    <div
-      className="w-full h-[70vh] bg-[#F1FAFA] dark:bg-black dark:text-white"
-    >
-      {/* <Navbar /> */}
-
-      <div className="flex">
-        <div className="flex flex-col justify-center items-end w-1/2">
-        <div className="pr-28">
-          <h1 className="text-5xl font-bold leading-snug text-[#252525] dark:text-white">
-            Are you looking for <br /> Freelancers?
-          </h1>
-          <p className="opacity-50 mt-2 leading-7 mr-[5.5rem]">
-            Hire Great Freelancers, Fast. Spacelance helps <br /> you hire elite
-            freelancers at a moment's notice
-          </p>
-
-        </div>
-
-          <div className="flex items-center mt-5 gap-4 mr-14">
-            <Button
-              text="Hire a freelancer"
-              variant="primary"
-              className="py-3"
-            />
-            <input
-              placeholder="search freelance work"
-              className="w-72 py-3 placeholder:text-sm px-3 rounded border"
-            />
-            <div className="border w-7 h-7 relative right-16 rounded-full bg-blue-100 p-1">
-              <img src="/src/assets/serachicon.png" alt="" />
+    <div className="flex w-[70%] h-[30rem] mx-auto px-5 py-16 text-white mb-10">
+        <div className="w-1/2 px-10">
+            <div>
+              <h1 className="text-6xl font-bold">Connect with Top <span className="text-[#6366F1]">Freelancers</span> & Businesses</h1>
+              <p className="mt-5 text-gray-400 text-lg">Find expert freelancers and quality projects in our trusted <br /> marketplace. Start collaborating today!</p>
+              <div className="flex gap-10 mt-8">
+                <Button text="Hire Talent" variant="secondary" className="py-4 px-8"/>
+                <Button text="Find Work" variant="outline" className="py-4 px-8" onClick={()=>navigate("/projects")}/>
+              </div>
             </div>
+        </div>
+        <div className="flex-1 flex justify-center items-center px-10">
+          <div className="flex justify-center items-center h-full w-full rounded-lg bg-[#DDDDDD]">
+              <h1 className="text-5xl text-gray-400 font-semibold">Platform Preview</h1>
           </div>
         </div>
-        <div className="flex items-center flex-1">
-          <img
-            src="/src/assets/Workingremotely.svg"
-            alt=""
-            className="h-[60vh]"
-          />
-        </div>
-      </div>
     </div>
   );
 };

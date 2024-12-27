@@ -1,16 +1,23 @@
-// import Footer from "../Footer"
-import HeroSection from "./HeroSection"
-import HowItWorks from "./HowItWorks"
-import LatestWork from "./LatestWork"
-import WhyChoosUs from "./WhyChoosUs"
+import Categories from "./categories";
+import Community from "./Community";
+import HeroSection from "./HeroSection";
+import HowItWorks from "./HowItWorks";
+import MarketPreview from "./MarketPreview";
+import PlatformFeatures from "./PlatformFeatures";
+import SuccessStories from "./SuccessStories";
+import TrustSafety from "./Trust-Safety";
 
 const HomePage = () => {
   return (
    <>
    <HeroSection />
    <HowItWorks />
-   <WhyChoosUs />
-   <LatestWork />
+   <MarketPreview />
+   <Categories />
+   <SuccessStories />
+   <PlatformFeatures />
+   <Community />
+   <TrustSafety />
    </>
   )
 }
