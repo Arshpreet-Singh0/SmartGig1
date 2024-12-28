@@ -1,6 +1,6 @@
-import { propsType } from "../../types/profile";
 
-const AllSkills = ({profile}:propsType) => {
+
+const AllSkills = ({profile}:any) => {
   return (
     <div className="w-[80%] mx-auto px-8 py-10">
       <h1 className="text-2xl font-bold mb-5">Skills & Expertise</h1>

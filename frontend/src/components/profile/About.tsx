@@ -1,9 +1,9 @@
 import { Clock4, MessagesSquare, ShieldCheck } from "lucide-react";
 import React from "react";
-import { propsType } from "../../types/profile";
 
 
-const About = ({profile}:propsType) => {
+const About = ({profile}:any) => {
+console.log(profile.about);
 
   return (
     <div className="bg-white">
@@ -39,7 +39,7 @@ const About = ({profile}:propsType) => {
             <div className="border border-gray-300 p-5 rounded-xl bg-[#f5f5f5]">
               <h4>Languages</h4>
               <div className="mt-5 text-gray-600 flex flex-col gap-3">
-                {profile?.languages?.map((language, index) => (
+                {profile?.languages?.map((language:any, index:number) => (
                   <div key={index} className="flex justify-between">
                     <p>{language.name}</p>
                     <p>{language.level}</p>
@@ -50,7 +50,7 @@ const About = ({profile}:propsType) => {
             <div className="border border-gray-300 p-5 rounded-xl bg-[#f5f5f5]">
                 <h4>Education</h4>
               <div className="mt-5 text-gray-600 flex flex-col gap-3">
-                {profile?.education?.map((education, index) => (
+                {profile?.education?.map((education:any, index:number) => (
                   <div>
                     <h4 className="text-black-100">{education.degree}</h4>
                     <p className="text-sm">{education.institution}</p>

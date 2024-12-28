@@ -1,11 +1,12 @@
 import { Modal } from "antd";
 import { Input } from "../Input";
-import { ProfileType, SkillType } from "../../types/profile";
+import { EducationType, ProfileType, SkillType } from "../../types/profile";
 import { createRef, useEffect, useRef, useState } from "react";
 import { Button } from "../button/Button";
+import { X } from "lucide-react";
 
 interface propsType {
-  profile: ProfileType;
+  profile: any;
   isModalOpen: boolean;
   setIsModalOpen: (isModalOpen: boolean) => void;
   setProfile : (profile : ProfileType) => void;
@@ -19,6 +20,7 @@ const EditProfileModal = ({
 }: propsType) => {
   const [skills, setSkills] = useState<SkillType[]>([]);
   const [domain, setDomain] = useState<string>("");
+  const [education, setEducation] = useState<EducationType[]>([]);
   const [info, setInfo] = useState({
     name: "",
     role: "",
@@ -29,6 +31,7 @@ const EditProfileModal = ({
 
   useEffect(() => {
     setSkills(profile?.skills);
+    setEducation(profile?.education);
     setInfo({
         name: profile?.name,
         role: profile?.role,
@@ -39,7 +42,8 @@ const EditProfileModal = ({
   }, [profile]);
   const handleOk = () => {
     setIsModalOpen(false);
-    setProfile({...profile, skills, ...info});
+    setProfile({...profile, skills, ...info, education});
+
   };
 
   const handleCancel = () => {
@@ -67,6 +71,40 @@ const EditProfileModal = ({
     inputRefs.current[domainIndex].value = "";
   };
 
+  const handleRemoveSkill = (domain:string, skil: string) => {
+    //@ts-ignore
+    const filteredSkills:SkillType[] = skills?.map((skill)=>{
+      if(skill.domain === domain){
+        const s = skill?.skills?.filter(s=>s!=skil);
+        return {domain, skills:s};
+      }
+      return skill;
+  })
+
+  setSkills(filteredSkills);
+  
+  }
+
+  const handleAddNewEducation = ()=>{
+    setEducation([...education, { degree: "", institution: "", startYear: "", endYear: ""}]);
+  }
+
+  const handleChangeInEducation = (idx:number, e:any)=>{
+    const updatedEducation = education.map((education, index)=>{
+      if(index === idx){
+        return {...education, [e.target.name]: e.target.value}
+        }
+        return education;
+        })
+        setEducation(updatedEducation);
+  };
+
+  const handleDeleteEducation = (idx:number)=>{
+    const filteredEducation = education?.filter((_,i)=>i!==idx);
+
+    setEducation(filteredEducation);
+  }
+  
   return (
     <Modal
       open={isModalOpen}
@@ -125,18 +163,45 @@ const EditProfileModal = ({
           required
         />
       </div>
+      <div className="m-2">
+        <label className="text-sm font-medium text-gray-700 ">Education</label>
+
+        {
+          education?.map((edu, idx)=>(
+            <div className="mt-2">
+              <div className="flex justify-between">
+
+              <h3>Education {idx+1}</h3>
+              <h3><X width={20} onClick={()=>handleDeleteEducation(idx)}/></h3>
+              </div>
+            <div className="grid grid-cols-2 gap-2">
+              <Input type="text" placeholder="*institution" name="institution" classname="w-full" value={edu.institution} onChange={e=>handleChangeInEducation(idx, e)} required />
+              <Input type="text" placeholder="*Degree" name="degree" classname="w-full" value={edu.degree} onChange={e=>handleChangeInEducation(idx, e)} required/>
+              <Input type="text" placeholder="*Start year" name="startYear" classname="w-full" value={edu.startYear} onChange={e=>handleChangeInEducation(idx, e)} required/>
+              <Input type="text" placeholder="*End year" name="endYear" classname="w-full" value={edu.endYear} onChange={e=>handleChangeInEducation(idx, e)} required/>
+
+            </div>
+            </div>
+
+          ))
+        }
+        <Button text="Add New Education" variant="primary" className="mt-5" onClick={handleAddNewEducation}/>
+      </div>
 
       <div>
         {skills?.map((skill: any, index: number) => (
           <div key={index} className="pt-5 rounded-xl bg-white">
-            <h3 className="m-2">Domain : {skill.domain}</h3>
+            <h3 className="m-2">Domain : {skill?.domain}</h3>
             <div className="flex flex-wrap">
               {skill.skills.map((s: any, i: number) => (
                 <div
                   key={i}
                   className="inline-block border m-2 px-4 py-1 rounded-2xl bg-[#f5f5f5] text-gray-600"
                 >
-                  {s}
+                  <div className="flex">
+                    {s}
+                    <X className="ml-2" width={20} onClick={()=>handleRemoveSkill(skill.domain, s)}/>
+                  </div>
                 </div>
               ))}
             </div>

@@ -1,10 +1,9 @@
 import { StarFilled } from "@ant-design/icons";
 import { Button } from "../button/Button";
 import { Clock4, MapPin } from "lucide-react";
-import { ProfileType } from "../../types/profile";
 
 interface propsType {
-  profile : ProfileType,
+  profile : any,
   showModal : () => void
 }
 
@@ -25,7 +24,7 @@ const ProfileCard  = ({profile, showModal}:propsType) => {
           <h4 className="flex text-white mt-2">
             {" "}
             <StarFilled className="text-yellow-500 text-lg mr-2" /> {profile.rating}{" "}
-            <span className="ml-2 text-gray-400">({profile.reviews} reviews)</span>
+            <span className="ml-2 text-gray-400">( {profile?.ratingCount} reviews )</span>
           </h4>
         </div>
         <div className="flex-1 h-full">
@@ -36,7 +35,7 @@ const ProfileCard  = ({profile, showModal}:propsType) => {
             </div>
             <div className="w-1/3 border border-gray-500 rounded-lg p-4">
               <h2 className="text-white text-xl">Success Rate</h2>
-              <h1 className="text-white text-3xl font-semibold mt-2">{profile.successRate} %</h1>
+              <h1 className="text-white text-3xl font-semibold mt-2">{profile.successRate ? profile.successRate : "0"} %</h1>
             </div>
             <div className="w-1/3 border border-gray-500 rounded-lg p-4">
               <h2 className="text-white text-xl">Response Time</h2>

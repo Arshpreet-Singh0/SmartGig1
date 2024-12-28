@@ -11,8 +11,8 @@ export interface LanguageType {
 export interface EducationType {
     institution: string;
     degree: string;
-    startYear: number;
-    endYear: number;
+    startYear: string;
+    endYear: string;
   };
   
 export interface ProfileType {

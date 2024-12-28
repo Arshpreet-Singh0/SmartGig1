@@ -13,7 +13,7 @@ const PerformanceStatics = ({profile}:any) => {
           <div className="flex justify-between items-center">
             <div>
               <p className="text-sm text-gray-500">Project Completion</p>
-              <p className="text-3xl font-semibold">{profile?.successRate}%</p>
+              <p className="text-3xl font-semibold">{profile?.successRate ? profile?.successRate : "0"}%</p>
             </div>
             <div className="flex items-center justify-center w-9 h-9 bg-green-100 rounded-full">
               <CheckCircleOutlined className="text-green-600 font-bold text-xl" />
@@ -33,7 +33,7 @@ const PerformanceStatics = ({profile}:any) => {
           <div className="flex justify-between items-center">
             <div>
               <p className="text-sm text-gray-500">Project Completion</p>
-              <p className="text-3xl font-semibold">{profile?.successRate}%</p>
+              <p className="text-3xl font-semibold">{profile?.successRate ? "" : "0"}%</p>
             </div>
             <div className="flex items-center justify-center w-9 h-9 bg-blue-200 rounded-full">
               <Clock4 className="text-blue-100 font-bold text-xl" />
@@ -63,7 +63,7 @@ const PerformanceStatics = ({profile}:any) => {
           </div>
           <p className="flex items-center text-gray-500 mt-3">
           <Rate allowHalf defaultValue={profile?.rating} />
-          ({profile?.reviews} reviews)
+          ( {profile.projectsCompleted} reviews )
 
           </p>
         </div>
