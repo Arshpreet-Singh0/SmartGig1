@@ -14,29 +14,40 @@ datasource db {
 }
 
 model User {
-  id                Int       @id @default(autoincrement())
-  email             String    @unique
-  name              String
-  password          String
-  role              String?
-  profilePicture    String?
-  about             String?
-  location          String?
-  responseTime      String?
-  imageUrl          String?
-  projectsCompleted Int       @default(0)
-  rating            Float     @default(0.0) // Default rating is 0.0
+  id             Int          @id @default(autoincrement())
+  email          String       @unique
+  name           String
+  password       String
+  phoneNumber    String?
+  accountType    accountType?
+  role           String?
+  profilePicture String?
+  about          String?
+  location       String?
+  responseTime   String?
+  linkedInUrl    String?
+  githubUrl      String?
+  portfolioUrl   String?
+
+  projectsCompleted Int       @default(0) // Already in the schema
+  totalEarnings      Float     @default(0.0) // Add this to track earnings
+
+  rating            Float     @default(0.0)
   ratingCount       Int       @default(0)
   createdAt         DateTime  @default(now())
   updatedAt         DateTime? @updatedAt
+  isEmailVerified   Boolean   @default(false)
+  isPhoneVerified   Boolean   @default(false)
 
-  //relations
-  projects  Project[]
-  proposals Proposal[]
-  education Education[]
-  skills    Skills[]
-  languages Languages[]
+  // Relations
+  projects         Project[]   @relation("ClientProjects")
+  assignedProjects Project[]   @relation("FreelancerProjects")
+  proposals        Proposal[]
+  education        Education[]
+  skills           Skills[]
+  languages        Languages[]
 }
+
 
 model Education {
   id          Int    @id @default(autoincrement())
@@ -74,27 +85,18 @@ model Project {
   skillsRequired  String[]
   status          ProjectStatus   @default(OPEN)
   experienceLevel ExperienceLevel @default(BEGINNER)
+  deadline        DateTime?
+  assignedAt      DateTime?
   createdAt       DateTime        @default(now())
   updatedAt       DateTime        @updatedAt
   userId          Int
 
   //realtions
-  User User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  User         User  @relation("ClientProjects", fields: [userId], references: [id], onDelete: Cascade)
+  freelancer   User? @relation("FreelancerProjects", fields: [freelancerId], references: [id], onDelete: Cascade)
+  freelancerId Int?
 
   Proposal Proposal[]
-}
-
-enum ProjectStatus {
-  OPEN
-  IN_PROGRESS
-  COMPLETED
-  CLOSED
-}
-
-enum ExperienceLevel {
-  BEGINNER
-  INTERMEDIATE
-  EXPERT
 }
 
 model Proposal {
@@ -113,8 +115,26 @@ model Proposal {
   freelancerId Int
 }
 
+enum ProjectStatus {
+  OPEN
+  IN_PROGRESS
+  COMPLETED
+  CLOSED
+}
+
+enum ExperienceLevel {
+  BEGINNER
+  INTERMEDIATE
+  EXPERT
+}
+
 enum ProposalStatus {
   SUBMITTED
   ACCEPTED
   REJECTED
+}
+
+enum accountType {
+  FREELANCER
+  CLIENT
 }

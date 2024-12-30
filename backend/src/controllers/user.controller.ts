@@ -116,7 +116,7 @@ export const updateUserProfile = async (req: Request, res: Response): Promise<vo
     about,
     location,
     responseTime,
-    imageUrl,
+    profilePicture,
     role,
     education,
     skills
@@ -140,7 +140,7 @@ export const updateUserProfile = async (req: Request, res: Response): Promise<vo
         location,
         role,
         responseTime,
-        imageUrl,
+        profilePicture,
         education: {
           deleteMany: {}, 
           create: education // Add new education records
@@ -162,7 +162,7 @@ export const updateUserProfile = async (req: Request, res: Response): Promise<vo
         email : true,
         responseTime : true,
         projectsCompleted : true,
-        imageUrl : true,
+        profilePicture : true,
         education : true,
         rating : true,
         ratingCount : true,
@@ -198,7 +198,7 @@ export const getUserProfile = async (req:Request, res:Response)=>{
         projectsCompleted : true,
         rating : true,
         ratingCount : true,
-        imageUrl: true,
+        profilePicture : true,
         education: true,
         skills: true
     },
