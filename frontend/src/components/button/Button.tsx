@@ -11,7 +11,7 @@ interface ButtonProps {
 }
 
 const variantClasses = {
-  primary: "bg-blue-100 text-white",
+  primary: "bg-[#2463EB] text-white",
   secondary: "bg-[#4F45E4] text-white",
   outline: "border border-gray-500",
 };

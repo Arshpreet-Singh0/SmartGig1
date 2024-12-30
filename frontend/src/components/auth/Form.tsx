@@ -1,123 +1,148 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { Input } from "../Input";
 import { Button } from "../button/Button";
-import { Check } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 interface inputType {
   email: string;
   password: string;
-  name? : string,
+  name?: string;
+  accountType?: string;
 }
-interface formProps {
+
+interface FormProps {
   type: "signin" | "signup";
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   input: inputType;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
 }
-const Form = ({ type, onSubmit, input, onChange }: formProps) => {
-  return (
-    <div className="flex justify-center items-center pt-10 dark:bg-black">
-      <div className="flex w-[880px] h-[645px] shadow rounded-xl dark:shadow-white">
-        <div
-          className="w-1/2 bg-contain rounded-l-xl p-10 pt-16 hidden md:block"
-          style={{ backgroundImage: "url(/src/assets/auth.png)" }}
-        >
-          <div>
-            <h1 className="text-3xl text-center text-white">
-              Success starts here
-            </h1>
-            <h3 className="flex ml-9 mt-5 text-white">
-              <Check />
-              &nbsp;&nbsp; Over 700 categories
-            </h3>
-            <h3 className="flex ml-9 mt-3 text-white">
-              <Check />
-              &nbsp;&nbsp; Quality work done faster
-            </h3>
-          </div>
-        </div>
-        <div className="flex-1 pt-6 pb-8 mt-5">
-          <div className="h-[333px] px-10 py-5">
-            <h4 className="text-2xl text-[#222325] mb-2 dark:text-white">
-              {
-                type==="signup" ? "Create you account" : "Sign in to your account"
-              }
-              
-            </h4>
-            <p className="text-sm opacity-75 dark:text-white">
-              {type === "signup" ? (
-                <p>
-                  Already have an account?
-                  <Link to={"/signin"} className="underline ml-2">
-                    Login here
-                  </Link>
-                </p>
-              ) : (
-                <p>
-                  Don't have an account?
-                  <Link to={"/signup"} className="underline ml-2">
-                    Join here
-                  </Link>
-                </p>
-              )}
-            </p>
-            <div className="mt-10">
-              <form onSubmit={onSubmit}>
-                {
-                  type==="signup" &&  (
-                    <div>
-                  <label className="text-sm font-medium text-gray-700 m-2">
-                    Name
-                  </label>
-                  <Input
-                    placeholder="Name"
-                    type="text"
-                    classname="w-full"
-                    name="name"
-                    value={input.name || ""}
-                    onChange={e=>onChange(e)}
-                  />
-                </div>
-                  )
-                }
-                <div>
-                  <label className="text-sm font-medium text-gray-700 m-2">
-                    Email address
-                  </label>
-                  <Input
-                    placeholder="Email"
-                    type="text"
-                    classname="w-full"
-                    name="email"
-                    value={input.email}
-                    onChange={e=>onChange(e)}
-                  />
-                </div>
-                <div className="mt-2">
-                  <label className="text-sm font-medium text-gray-700 m-2">
-                    Password
-                  </label>
-                  <Input
-                    placeholder="Password"
-                    type="password"
-                    classname="w-full"
-                    name="password"
-                    value={input.password}
-                    onChange={onChange}
-                  />
-                </div>
 
-                <Button
-                  text="signup"
-                  variant="primary"
-                  className="m-2 mt-8"
-                  fullWidth
-                />
-              </form>
-            </div>
+const Form = ({ type, onSubmit, input, onChange }: FormProps) => {
+  const navigate = useNavigate();
+
+  return (
+    <div className="flex justify-center items-center p-20 bg-black">
+      <div className="p-8 border border-gray-700 rounded-lg bg-[#262626] w-[27rem] shadow-lg">
+        {/* Navigation Tabs */}
+        <div className="flex text-gray-400 mb-5 justify-evenly border-b border-gray-700 pb-2">
+          <div
+            role="button"
+            className={`px-2 pb-3 cursor-pointer ${
+              type === "signin"
+                ? "border-b-2 border-blue-600 text-gray-300"
+                : ""
+            }`}
+            onClick={() => navigate("/signin")}
+          >
+            Login
+          </div>
+          <div
+            role="button"
+            className={`px-2 pb-3 cursor-pointer ${
+              type === "signup"
+                ? "border-b-2 border-blue-600 text-gray-300"
+                : ""
+            }`}
+            onClick={() => navigate("/signup")}
+          >
+            Register
           </div>
         </div>
+
+        {/* Heading */}
+        <h2 className="text-white text-2xl font-bold text-center">
+          {type === "signin" ? "Welcome back" : "Create an account"}
+        </h2>
+        <p className="text-gray-400 text-sm mt-1 text-center">
+          {type === "signin"
+            ? "Sign in to your account"
+            : "Join SmartGig to explore opportunities"}
+        </p>
+
+        {/* Form */}
+        <form className="mt-6" onSubmit={onSubmit}>
+          {type === "signup" && (
+            <div className="mb-5">
+              <label htmlFor="name" className="block text-gray-400 mb-2">
+                Name
+              </label>
+              <Input
+                type="text"
+                name="name"
+                value={input.name}
+                onChange={onChange}
+                classname="bg-[#404040] border border-gray-700 focus:ring-gray-700 focus:border-blue-500 w-full text-gray-300"
+              />
+            </div>
+          )}
+
+          <div className="mb-5">
+            <label htmlFor="email" className="block text-gray-400 mb-2">
+              Email
+            </label>
+            <Input
+              type="email"
+              name="email"
+              value={input.email}
+              onChange={onChange}
+              classname="bg-[#404040] border border-gray-700 focus:ring-gray-700 focus:border-blue-500 w-full text-gray-300"
+            />
+          </div>
+
+          <div className="mb-5">
+            <label htmlFor="password" className="block text-gray-400 mb-2">
+              Password
+            </label>
+            <Input
+              type="password"
+              name="password"
+              value={input.password}
+              onChange={onChange}
+              classname="bg-[#404040] border border-gray-700 focus:ring-gray-700 focus:border-blue-500 w-full text-gray-300"
+            />
+          </div>
+
+          {type === "signup" && (
+            <div className="mb-5">
+              <label htmlFor="accountType" className="block text-gray-400 mb-2">
+                Account Type
+              </label>
+              <select
+                id="accountType"
+                className="bg-[#404040] border border-gray-700 focus:ring-gray-700 focus:border-blue-500 w-full rounded-lg px-3 py-2 text-gray-300"
+                value={input.accountType}
+                onChange={onChange}
+                name="accountType"
+              >
+                <option value="student" selected>Select Account Type</option>
+                <option value="freelancer">Freelancer</option>
+                <option value="client">Client</option>
+              </select>
+            </div>
+          )}
+
+          {type === "signin" && (
+            <div className="flex items-center justify-between text-gray-400 text-sm mt-4">
+              <label className="flex items-center">
+                <input
+                  type="checkbox"
+                  className="h-4 w-4 rounded border-gray-700 bg-[#404040]"
+                />
+                <span className="ml-2">Remember me</span>
+              </label>
+              <a href="#" className="text-blue-500 hover:underline">
+                Forgot password?
+              </a>
+            </div>
+          )}
+
+          {/* Submit Button */}
+          <Button
+            variant="primary"
+            text={type === "signin" ? "Sign In" : "Sign Up"}
+            className="mt-6 w-full py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700"
+          />
+        </form>
       </div>
     </div>
   );

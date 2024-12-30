@@ -1,14 +1,16 @@
 import React, { useState } from "react"
 import Form from "./Form"
 import axios from "axios";
+import { message } from "antd";
 
 const Signup = () => {
     const [input, setInput] = useState({
         email: "",
         name : "",
         password: "",
+        accountType : "",
     });
-    const handleChange = (e : React.ChangeEvent<HTMLInputElement>)=>{
+    const handleChange = (e : React.ChangeEvent<HTMLInputElement | HTMLSelectElement>)=>{
         setInput((prev)=>(
             {...prev, [e.target.name]: e.target.value}
         ));
@@ -19,11 +21,21 @@ const Signup = () => {
 
         try {
             const res = await axios.post("http://localhost:8080/api/v1/user/signup", input);
+            
+            if(res?.data?.success){
+                message.success( res?.data?.message || "Signup Successfull");
 
-            console.log(res);
+            }
             
         } catch (error) {
-            console.log(error);
+            if (axios.isAxiosError(error)) {
+                const errorMessage =
+                  error.response?.data?.message || "An unexpected error occurred.";
+                message.error(errorMessage);
+              } else {
+                message.error("Something went wrong.");
+                console.error(error);
+              }
         }
         
     }

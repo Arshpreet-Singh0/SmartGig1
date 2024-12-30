@@ -118,7 +118,6 @@ export const updateUserProfile = async (req: Request, res: Response): Promise<vo
     responseTime,
     imageUrl,
     role,
-    profilePicture,
     education,
     skills
   } = req.body;
@@ -162,14 +161,20 @@ export const updateUserProfile = async (req: Request, res: Response): Promise<vo
         role : true,
         email : true,
         responseTime : true,
+        projectsCompleted : true,
         imageUrl : true,
         education : true,
+        rating : true,
+        ratingCount : true,
         skills : true
       },
       
     });
 
-    res.status(200).json(updatedUser);
+    res.status(200).json({
+      updatedUser,
+      success : true
+    });
   } catch (error) {
     console.log(error);
     res.status(500).send({ message: "Error updating user profile", error });
@@ -190,13 +195,19 @@ export const getUserProfile = async (req:Request, res:Response)=>{
         role: true,
         email : true,
         responseTime: true,
+        projectsCompleted : true,
+        rating : true,
+        ratingCount : true,
         imageUrl: true,
         education: true,
         skills: true
     },
   });
 
-  res.status(200).json({user});
+  res.status(200).json({
+    user,
+    success : true
+  });
   } catch (error) {
     console.log(error);
     res.status(500).send({ message: "Error updating user profile", error });
