@@ -33,9 +33,9 @@ const Navbar = () => {
 
   return (
     <div className="flex items-center gap-20 h-20 shadow dark:bg-black bg-[#171717] sticky top-0 z-50">
-      <div className="flex items-center justify-center gap-40 w-1/2 ml-32">
+      <div className="flex items-center justify-between gap-40 w-1/2 ml-32">
         <img src="/src/assets/smartgig-removebg-preview (1).png" alt="logo" className="w-56 h-32" />
-        <div className="flex items-center">
+        {/* <div className="flex items-center">
           <Input
             placeholder="What service are you looking for today?"
             classname="w-96 bg-[#ECE6F0] rounded-full dark:bg-black dark:text-white"
@@ -43,7 +43,7 @@ const Navbar = () => {
           <div className="relative right-14 dark:right-[60px] w-12 h-10 cursor-pointer">
             <Search className="text-black ml-3 mt-2 dark:text-white" />
           </div>
-        </div>
+        </div> */}
       </div>
       <ul className="flex items-center gap-16 mr-8">
         <li className="opacity-80 hover:opacity-100 text-white text-lg cursor-pointer"><Link to="/">Home</Link></li>

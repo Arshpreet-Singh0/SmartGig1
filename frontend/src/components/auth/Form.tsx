@@ -115,8 +115,8 @@ const Form = ({ type, onSubmit, input, onChange }: FormProps) => {
                 name="accountType"
               >
                 <option value="student" selected>Select Account Type</option>
-                <option value="freelancer">Freelancer</option>
-                <option value="client">Client</option>
+                <option value="FREELANCER">Freelancer</option>
+                <option value="CLIENT">Client</option>
               </select>
             </div>
           )}

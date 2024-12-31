@@ -6,7 +6,7 @@ const secretKey = process.env.SECRET_KEY || "";
 
 export const signup = async (req: Request, res: Response): Promise<void> => {
   try {
-    const { name, email, password } = req.body;
+    const { name, email, password, accountType } = req.body;
     if (!name || !email || !password) {
       res.status(400).json({ message: "Please fill all fields" });
       return;
@@ -33,6 +33,7 @@ export const signup = async (req: Request, res: Response): Promise<void> => {
         name,
         email,
         password: hashedPassword,
+        accountType,
       },
     });
 
