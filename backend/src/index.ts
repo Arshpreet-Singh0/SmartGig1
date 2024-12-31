@@ -6,7 +6,6 @@ import cors from 'cors';
 
 import authRouter from './routes/user.routes';
 import projectRouter from './routes/project.routes';
-import proposalRouter from './routes/proposal.routes';
 import freelancerRouter from './routes/freelancer.routes'
 import clientRouter from './routes/client.routes'
 
@@ -25,7 +24,6 @@ app.use(cors({
 
 app.use('/api/v1/user', authRouter);
 app.use('/api/v1/project', projectRouter);
-app.use('/api/v1/proposal', proposalRouter);
 app.use('/api/v1/freelancer', freelancerRouter);
 app.use('/api/v1/client', clientRouter);
 
