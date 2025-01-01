@@ -1,0 +1,40 @@
+import React from "react";
+import { CheckCircleOutlined } from "@ant-design/icons";
+import { CircleDollarSign, Clock4, MessageSquareMore } from "lucide-react";
+
+const Cards = () => {
+  return (
+    <div className="grid grid-cols-4 gap-4 p-6">
+        <Card heading="Active Projects" number="10" icon={<CheckCircleOutlined className="text-green-600 font-bold text-xl" />}/>
+        <Card heading="Pending Proposals" number="8" icon={<Clock4 className="text-yellow-600 font-bold text-xl"/>}/>
+        <Card heading="Unread Messages" number="5" icon={<MessageSquareMore className="text-blue-600 font-bold text-xl" />}/>
+        <Card heading="Earnings" number="$ 0" icon={<CircleDollarSign className="text-green-600 font-bold text-xl" />}/>
+    
+    </div>
+  )
+}
+
+export default Cards;
+
+interface props {
+    heading : string;
+    number : string;
+    icon : React.ReactElement
+}
+
+const Card : React.FC<props>  = ({heading, number, icon}) => {
+    return (
+        <div className="bg-black-200 h-28 rounded-lg border border-gray-700 p-4">
+            <div className="flex justify-between items-center">
+                <div>
+                    <p className="text-[#747474] text-sm">{heading}</p>
+                    <h1 className="text-white text-3xl mt-1">{number}</h1>
+                </div>
+                <div className="bg-[#333333] rounded-lg p-3">
+                    {icon}
+                </div>
+
+            </div>
+        </div>
+    )
+}

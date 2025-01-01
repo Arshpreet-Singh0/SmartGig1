@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
-import { Button } from "../button/Button"
-import ThemeToggle from "../ThemeToggle"
+import { Button } from "../ui/Button"
+import ThemeToggle from "../ui/ThemeToggle"
 
 const Navbar = () => {
   return (

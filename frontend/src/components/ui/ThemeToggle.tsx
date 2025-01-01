@@ -13,7 +13,7 @@ const ThemeToggle = () => {
       root.style.backgroundColor = "#000000"; 
     } else {
       root.classList.remove("dark");
-      root.style.backgroundColor = "#fff";
+      root.style.backgroundColor = "#171717";
     }
     localStorage.setItem("theme", theme);
   }, [theme]);

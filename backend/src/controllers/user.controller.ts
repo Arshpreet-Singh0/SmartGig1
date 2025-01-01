@@ -90,6 +90,7 @@ export const signin = async (req: Request, res: Response): Promise<void> => {
       id: user.id,
       name: user.name,
       email: user.email,
+      accountType : user.accountType,
     }
 
     res
@@ -97,7 +98,8 @@ export const signin = async (req: Request, res: Response): Promise<void> => {
       .cookie("token", token, {
         maxAge: 1 * 24 * 60 * 60 * 1000,
         httpOnly: true,
-        secure: true,
+        sameSite: "none", 
+        secure: false,
       })
       .json({
         message: `Welcome back ${user.name}`,

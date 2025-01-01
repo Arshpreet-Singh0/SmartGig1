@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
 import { LogOut, Search, User } from 'lucide-react';
-import { Input } from '../Input';
-import { Button } from '../button/Button';
+// import { Input } from '../ui/Input';
+import { Button } from '../ui/Button';
 import { Link, useNavigate } from 'react-router-dom';
-import ThemeToggle from '../ThemeToggle';
+import ThemeToggle from '../ui/ThemeToggle';
 import { useAppSelector } from '../../hooks/hook';
 import { isUserLoggedIn } from '../../redux/authSlice';
 
@@ -50,6 +50,7 @@ const Navbar = () => {
         <li className="opacity-80 hover:opacity-100 text-white text-lg cursor-pointer"><Link to="/projects">Project</Link></li>
         {isUserExist ? (
           <>
+          <li className="opacity-80 hover:opacity-100 text-white text-lg cursor-pointer"><Link to="/dashboard">Dashboard</Link></li>
           <li className="opacity-80 hover:opacity-100 text-white text-lg cursor-pointer">Messages</li>
           <li>
             <div ref={dropdownRef} className="relative">

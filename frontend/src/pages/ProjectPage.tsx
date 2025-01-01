@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import Project from "../components/projects/project";
+import Project from "../components/projects/Project";
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 

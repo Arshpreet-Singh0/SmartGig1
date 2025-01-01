@@ -1,5 +1,5 @@
 import { Dot } from "lucide-react";
-import { Button } from "../button/Button";
+import { Button } from "../ui/Button";
 
 const ProjectCard = ({ project }: any) => {
   const hoursAgo = (timeString: string): number => {

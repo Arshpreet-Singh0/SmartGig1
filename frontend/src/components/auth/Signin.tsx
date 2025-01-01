@@ -28,7 +28,7 @@ const Signin = () => {
                 if(res?.data?.success){
                     message.success(res?.data?.message);
                     dispatch(setUser(res.data.user));
-                    navigate('/profile');
+                    navigate('/dashboard');
                 }
                 
             } catch (error) {

@@ -1,6 +1,6 @@
 import { ChartColumnDecreasing, Clock4, FileText, MessagesSquare, PersonStanding, ShieldCheck } from "lucide-react";
 import { Card } from "./HowItWorks";
-import { Button } from "../button/Button";
+import { Button } from "../ui/Button";
 
 const PlatformFeatures = () => {
   return (

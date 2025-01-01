@@ -1,6 +1,6 @@
 import { Rate } from "antd";
 import { BookOpen, CircleDollarSign, MessagesSquare, Zap } from "lucide-react";
-import { Button } from "../button/Button";
+import { Button } from "../ui/Button";
 
 const Community = () => {
   return (

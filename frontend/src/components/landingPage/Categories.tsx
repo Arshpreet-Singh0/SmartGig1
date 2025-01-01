@@ -7,7 +7,7 @@ import {
   Image,
   SquarePen,
 } from "lucide-react";
-import { Button } from "../button/Button";
+import { Button } from "../ui/Button";
 
 const categories = [
   {

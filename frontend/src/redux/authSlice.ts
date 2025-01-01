@@ -6,7 +6,7 @@ export interface User {
   id?: string;
   name?: string;
   email?: string;
-
+  accountType? : string,
 }
 
 // Define a type for the slice state
@@ -17,9 +17,10 @@ export interface UserState {
 // Define the initial state using that type
 const initialState: UserState = {
   user: {
-    id: '',
-    name: '',
-    email : ''
+    id : '',
+    name : '',
+    email : '',
+    accountType : ''
   },
 };
 
@@ -35,7 +36,8 @@ export const authSlice = createSlice({
       state.user = {
         id: '',
         name: '',
-        email : ''
+        email : '',
+        accountType : ''
       };
     },
   },

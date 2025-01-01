@@ -6,6 +6,7 @@ import Page from "./pages/Page";
 import ProfilePage from "./pages/ProfilePage";
 import NotFound from "./pages/NotFound";
 import JobPage from "./pages/ProjectPage";
+import DashBoard from "./pages/dashboard/DashBoard";
 
 const routes = createBrowserRouter([
   {
@@ -17,6 +18,7 @@ const routes = createBrowserRouter([
           { path: "/signup", element: <SignupPage /> },
           { path: "/profile", element: <ProfilePage />},
           { path: "/projects", element: <JobPage />},
+          { path: "/dashboard", element: <DashBoard />},
           { path: "*", element: <NotFound />},
     ],
   },

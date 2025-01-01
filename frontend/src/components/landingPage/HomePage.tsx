@@ -1,3 +1,4 @@
+import Navbar from "../navbar/Navbar";
 import Categories from "./categories";
 import Community from "./Community";
 import HeroSection from "./HeroSection";
@@ -10,6 +11,7 @@ import TrustSafety from "./Trust-Safety";
 const HomePage = () => {
   return (
    <>
+   <Navbar />
    <HeroSection />
    <HowItWorks />
    <MarketPreview />

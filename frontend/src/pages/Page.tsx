@@ -5,7 +5,7 @@ import Navbar from "../components/navbar/Navbar"
 const Page = () => {
   return (
     <>
-    <Navbar />
+    {/* <Navbar /> */}
     <Outlet />
     <Footer />
     </>

@@ -1,5 +1,5 @@
 import { StarFilled } from "@ant-design/icons";
-import { Button } from "../button/Button";
+import { Button } from "../ui/Button";
 import { Clock4, MapPin } from "lucide-react";
 
 interface propsType {

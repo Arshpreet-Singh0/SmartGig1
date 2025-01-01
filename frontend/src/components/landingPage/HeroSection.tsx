@@ -1,4 +1,4 @@
-import { Button } from "../button/Button";
+import { Button } from "../ui/Button";
 import { useNavigate } from "react-router-dom";
 const HeroSection = () => {
   const navigate = useNavigate();

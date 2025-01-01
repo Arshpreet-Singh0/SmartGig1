@@ -1,8 +1,8 @@
 import { Modal } from "antd";
-import { Input } from "../Input";
+import { Input } from "../ui/Input";
 import { EducationType, ProfileType, SkillType } from "../../types/profile";
 import { createRef, useEffect, useRef, useState } from "react";
-import { Button } from "../button/Button";
+import { Button } from "../ui/Button";
 import { X } from "lucide-react";
 
 interface propsType {
