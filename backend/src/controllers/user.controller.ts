@@ -96,10 +96,10 @@ export const signin = async (req: Request, res: Response): Promise<void> => {
     res
       .status(200)
       .cookie("token", token, {
-        maxAge: 1 * 24 * 60 * 60 * 1000,
+        maxAge: 1 * 24 * 60 * 60 * 1000, // 1 day
         httpOnly: true,
-        sameSite: "none", 
-        secure: false,
+        sameSite: process.env.NODE_ENV === "production" ? "none" : "lax", 
+        secure: process.env.NODE_ENV === "production", 
       })
       .json({
         message: `Welcome back ${user.name}`,
