@@ -19,29 +19,34 @@ const Signin = () => {
             ));
         }
     
-        const handleSubmit = async(e : React.FormEvent<HTMLFormElement>)=>{
-            e.preventDefault();
-            console.log(input);try {
-                const res = await axios.post("http://localhost:8080/api/v1/user/signin", input);
-    
-                
-                if(res?.data?.success){
-                    message.success(res?.data?.message);
-                    dispatch(setUser(res.data.user));
-                    navigate('/dashboard');
-                }
-                
-            } catch (error) {
-                if (axios.isAxiosError(error)) {
-                    const errorMessage =
-                      error.response?.data?.message || "An unexpected error occurred.";
-                    message.error(errorMessage);
-                  } else {
-                    message.error("Something went wrong.");
-                    console.error(error);
-                  }
+        const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+          e.preventDefault();
+          try {
+            const res = await axios.post(
+              "http://localhost:8080/api/v1/user/signin",
+              input,
+              {
+                withCredentials: true,
+              }
+            );
+        
+            if (res?.data?.success) {
+              message.success(res?.data?.message);
+              dispatch(setUser(res.data.user));
+              navigate("/dashboard");
             }
-        }
+          } catch (error) {
+            if (axios.isAxiosError(error)) {
+              const errorMessage =
+                error.response?.data?.message || "An unexpected error occurred.";
+              message.error(errorMessage);
+            } else {
+              message.error("Something went wrong.");
+              console.error(error);
+            }
+          }
+        };
+        
   return (
     <> 
         <Form type="signin" onChange={handleChange} onSubmit={handleSubmit} input={input}/>
