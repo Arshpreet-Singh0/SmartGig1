@@ -4,7 +4,7 @@ import { useState } from "react"
 const Sidebar = () => {
     const [selected, setSlected] = useState(1);
   return (
-    <div className="flex flex-col gap-4 bg-[#262626] w-64 min-h-screen sticky top-0 z-10 text-[#DBDBDB] px-6 border-r border-gray-700">
+    <div className="flex flex-col gap-4 bg-[#262626] w-64 h-screen sticky top-0 z-10 text-[#DBDBDB] px-6 border-r border-gray-700">
         <div className="flex items-center h-16">
             <h1 className="text-3xl font-semibold">Smart Gig</h1>
         </div>

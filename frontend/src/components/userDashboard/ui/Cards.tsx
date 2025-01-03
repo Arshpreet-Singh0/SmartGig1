@@ -2,10 +2,13 @@ import React from "react";
 import { CheckCircleOutlined } from "@ant-design/icons";
 import { CircleDollarSign, Clock4, MessageSquareMore } from "lucide-react";
 
-const Cards = () => {
+interface Props {
+    projects : number,
+}
+const Cards = ({projects}:Props) => {
   return (
     <div className="grid grid-cols-4 gap-4 p-6">
-        <Card heading="Active Projects" number="10" icon={<CheckCircleOutlined className="text-green-600 font-bold text-xl" />}/>
+        <Card heading="Active Projects" number={projects} icon={<CheckCircleOutlined className="text-green-600 font-bold text-xl" />}/>
         <Card heading="Pending Proposals" number="8" icon={<Clock4 className="text-yellow-600 font-bold text-xl"/>}/>
         <Card heading="Unread Messages" number="5" icon={<MessageSquareMore className="text-blue-600 font-bold text-xl" />}/>
         <Card heading="Earnings" number="$ 0" icon={<CircleDollarSign className="text-green-600 font-bold text-xl" />}/>
@@ -18,7 +21,7 @@ export default Cards;
 
 interface props {
     heading : string;
-    number : string;
+    number : number | string;
     icon : React.ReactElement
 }
 
