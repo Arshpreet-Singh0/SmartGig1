@@ -10,6 +10,17 @@ export const getFreelancerAssignedProjects = async (
             where: {
                 freelancerId: Number(req.userId),
             },
+            include : {
+                User : {
+                    select : {
+                        name : true,
+                        email : true
+                    }
+                }
+            },
+            orderBy: {
+                assignedAt: 'desc',
+            },
         });
 
         res.status(200).json({
@@ -86,6 +97,35 @@ export const getSubmittedProposal = async(req:Request, res:Response)=>{
             proposals,
         })
         
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const getProjectProposal = async(req:Request, res:Response) : Promise<void> =>{
+    try {
+        const userId = req.userId;
+
+        const proposals = await prisma.proposal.findMany({
+            where : {
+                freelancerId : Number(userId),
+            },
+            include: {
+                project : {
+                    include : {
+                        User : {
+                            select : {
+                                name : true,
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        res.status(200).json({
+            proposals,
+        });
     } catch (error) {
         console.log(error);
     }

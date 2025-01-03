@@ -73,8 +73,7 @@ export const acceptProposal = async (
   ): Promise<void> =>{
 
     try {
-        const {projectId} = req.params;
-        const {freelancerId} = req.body;
+        const {projectId, proposalId} = req.params;
         const project = await prisma.project.findUnique({
             where : {
                 id : Number(projectId),
@@ -96,15 +95,43 @@ export const acceptProposal = async (
             return;
         };
 
-
-        const updatedProject = await prisma.project.update({
-            where: {
-                id: Number(projectId),
-            },
-            data: {
-                freelancerId: Number(freelancerId),
-            },
+        const proposal = await prisma.proposal.findUnique({
+            where : {
+                id : Number(proposalId),
+            }
         });
+
+        if(!proposal){
+            res.status(404).json({
+                message : "Proposal not found",
+                success : false,
+                });
+                return;
+        }
+
+
+        const [updatedProject, updatedProposal] = await prisma.$transaction([
+            prisma.project.update({
+              where: {
+                id: Number(projectId),
+              },
+              data: {
+                freelancerId: Number(proposal.freelancerId),
+                status: 'IN_PROGRESS',
+                assignedAt: new Date(),
+              },
+            }),
+      
+            prisma.proposal.update({
+              where: {
+                id: Number(proposalId),
+              },
+              data: {
+                status: 'ACCEPTED',
+              },
+            }),
+          ]);
+        
     
         res.status(200).json({
             success: true,
@@ -117,3 +144,23 @@ export const acceptProposal = async (
     }
   }
   
+export const getProposals = async (
+    req: Request,
+    res: Response
+  ): Promise<void> =>{
+    try {
+        const {projectId} = req.params;
+
+        const proposals = await prisma.proposal.findMany({
+            where : {
+                projectId : Number(projectId),
+            }
+        });
+
+        res.status(200).json({
+            proposals,
+        })
+    } catch (error) {
+        console.log(error);
+    }
+  }
