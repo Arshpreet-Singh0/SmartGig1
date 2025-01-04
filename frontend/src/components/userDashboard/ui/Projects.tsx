@@ -6,7 +6,7 @@ interface Project {
   title: string;
   description: string;
   budget: number;
-  duration: string; // e.g., "22 days"
+  duration: string;
   skillsRequired: string[];
   status: string;
   experienceLevel: string;
@@ -27,29 +27,28 @@ interface props {
 
 const Projects: React.FC<props> = ({ projects }) => {
   return (
-    <div className="p-6 text-white">
-      <div className="bg-black-200 p-2 pb-4 rounded-lg">
+    <div className="p-6 text-white" id="projects">
+      <div className=" p-2 pb-4 rounded-lg">
         <div className="border-b border-gray-700 p-4">
-      <h1 className="text-2xl font-semibold">Projects</h1>
-      <p className="opacity-60 text-md">
-        Browse and manage your current projects
-      </p>
-
+          <h1 className="text-2xl font-semibold">Projects</h1>
+          <p className="opacity-60 text-md">
+            Browse and manage your current projects
+          </p>
         </div>
 
-      <div className="grid grid-cols-3 mt-5 gap-6">
-        {projects.length > 0 ? (
-          <>
-            {projects.map((project: Project, idx: number) => (
-              <ProjectCard project={project} key={idx} />
-            ))}
-          </>
-        ) : (
-          <div className="text-lg text-gray-400">
-            <h4>No projects found</h4>
-          </div>
-        )}
-      </div>
+        <div className="grid grid-cols-3 mt-5 gap-6 p-2">
+          {projects.length > 0 ? (
+            <>
+              {projects.map((project: Project, idx: number) => (
+                <ProjectCard project={project} key={idx} />
+              ))}
+            </>
+          ) : (
+            <div className="text-lg text-gray-400">
+              <h4>No projects found</h4>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

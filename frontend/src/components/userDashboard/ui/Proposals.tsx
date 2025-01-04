@@ -42,7 +42,7 @@ const Proposals = () => {
   }, []);
 
   return (
-    <div className="p-6 text-white font-inter">
+    <div className="p-6 text-white font-inter" id="Proposals">
       <h1 className="text-2xl font-semibold">Proposals</h1>
       <p className="opacity-60 text-md">
         Browse and manage your current projects
