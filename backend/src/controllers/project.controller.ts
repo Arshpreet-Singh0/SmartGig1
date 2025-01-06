@@ -35,3 +35,21 @@ export const getProject = async (req: Request, res: Response): Promise<void> => 
         res.status(500).send('Server error');
     }
 };
+
+export const getProjectById = async(req:Request, res:Response)=>{
+    try {
+        const {projectId} = req.params;
+
+        const project = await prisma.project.findUnique({
+            where: {
+                id: Number(projectId),
+            }
+        });
+
+        res.status(200).json({
+            project,
+        })
+    } catch (error) {
+        console.log(error);
+    }
+}
