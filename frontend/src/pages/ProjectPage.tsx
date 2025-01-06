@@ -10,6 +10,10 @@ const JobPage = () => {
   const [totalProjects, setTotalProjects] = useState(0);
 
   useEffect(()=>{
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+  });
     const fetchProjects = async () => {
       try {
         const res = await axios.get(`${BACKEND_URL}/api/v1/project/${currentPage}`);
@@ -25,9 +29,9 @@ const JobPage = () => {
   },[currentPage]);
   
   return (
-    <>
-    <Project projects={projects} currentPage={currentPage} setCurrentPage={setCurrentPage} totalProjects={totalProjects}/>
-    </>
+    <div className="flex-1">
+      <Project projects={projects} currentPage={currentPage} setCurrentPage={setCurrentPage} totalProjects={totalProjects}/>
+    </div>
   )
 }
 

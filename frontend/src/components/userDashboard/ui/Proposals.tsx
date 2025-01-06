@@ -1,7 +1,9 @@
 import axios from "axios";
-import { FileText } from "lucide-react";
+import { FileText, Plus } from "lucide-react";
 import { useEffect, useState } from "react";
 import { FaEye, FaEdit, FaTrashAlt } from "react-icons/fa";
+import { Button } from "../../ui/Button";
+import { useNavigate } from "react-router-dom";
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
@@ -26,13 +28,17 @@ interface Proposal {
 
 const Proposals = () => {
   const [proposals, setProposals] = useState<Proposal[]>([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchProposals = async () => {
       try {
-        const res = await axios.get(`${BACKEND_URL}/api/v1/freelancer/proposals`, {
-          withCredentials: true,
-        });
+        const res = await axios.get(
+          `${BACKEND_URL}/api/v1/freelancer/proposals`,
+          {
+            withCredentials: true,
+          }
+        );
         setProposals(res.data?.proposals);
       } catch (error) {
         console.log(error);
@@ -43,10 +49,18 @@ const Proposals = () => {
 
   return (
     <div className="p-6 text-white font-inter" id="Proposals">
-      <h1 className="text-2xl font-semibold">Proposals</h1>
-      <p className="opacity-60 text-md">
-        Browse and manage your current projects
-      </p>
+      <div className="flex justify-between items-center mb-8">
+        <div>
+          <h1 className="text-2xl font-semibold">Proposals</h1>
+          <p className="opacity-60 text-md">
+            Browse and manage your current projects
+          </p>
+        </div>
+        <div>
+          <Button text="New Proposal" variant="primary" startIcon={<Plus />} className="py-3" onClick={()=>navigate('/projects')}/>
+        </div>
+
+      </div>
 
       <div className="mt-5 border border-gray-700 rounded-lg bg-black-200">
         <table className="w-full border-collapse table-auto bg-black-200 text-white">
@@ -71,11 +85,17 @@ const Proposals = () => {
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 bg-[#404040] rounded-lg flex justify-center items-center">
                       <span className="text-white text-sm font-bold">
-                        <FileText className={`${index%2==0 ? 'text-blue-600' : 'text-green-600'}`} />
+                        <FileText
+                          className={`${
+                            index % 2 == 0 ? "text-blue-600" : "text-green-600"
+                          }`}
+                        />
                       </span>
                     </div>
                     <div>
-                      <h3 className="font-semibold">{proposal.project.title}</h3>
+                      <h3 className="font-semibold">
+                        {proposal.project.title}
+                      </h3>
                       <p className="text-sm opacity-60">
                         {proposal.project.category || "Web Development"}
                       </p>
@@ -87,12 +107,17 @@ const Proposals = () => {
                 <td className="px-6 py-4">
                   <div className="flex items-center gap-3">
                     <img
-                      src={proposal.project.User.avatar || "https://avatar.iran.liara.run/public"}
+                      src={
+                        proposal.project.User.avatar ||
+                        "https://avatar.iran.liara.run/public"
+                      }
                       alt="Client Avatar"
                       className="w-8 h-8 rounded-full"
                     />
                     <div>
-                      <h3 className="font-medium">{proposal.project.User.name}</h3>
+                      <h3 className="font-medium">
+                        {proposal.project.User.name}
+                      </h3>
                       <p className="text-sm opacity-60">
                         Company: {proposal.project.User.company || "Unknown"}
                       </p>
@@ -106,7 +131,9 @@ const Proposals = () => {
                     <h3 className="font-semibold">
                       ${proposal.proposedBudget.toLocaleString()}
                     </h3>
-                    <p className="text-sm opacity-60">{proposal.pricingType || "Fixed Price"}</p>
+                    <p className="text-sm opacity-60">
+                      {proposal.pricingType || "Fixed Price"}
+                    </p>
                   </div>
                 </td>
 
@@ -115,11 +142,14 @@ const Proposals = () => {
                   <div>
                     <h3 className="font-medium">
                       {proposal.createdAt &&
-                        new Date(proposal.createdAt).toLocaleDateString("en-US", {
-                          month: "short",
-                          day: "numeric",
-                          year: "numeric",
-                        })}
+                        new Date(proposal.createdAt).toLocaleDateString(
+                          "en-US",
+                          {
+                            month: "short",
+                            day: "numeric",
+                            year: "numeric",
+                          }
+                        )}
                     </h3>
                     <p className="text-sm opacity-60">
                       {proposal.createdAt &&

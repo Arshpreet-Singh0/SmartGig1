@@ -26,7 +26,7 @@ const Pagination = ({ totalResults, resultsPerPage, currentPage, setCurrentPage 
   };
 
   return (
-    <div className="flex items-center justify-center space-x-2">
+    <div className="flex items-center justify-center space-x-2 h-20 bg-black-200 text-white">
       <button
         className="px-4 py-2 border rounded-md hover:bg-gray-200"
         onClick={goToPreviousPage}
@@ -39,7 +39,7 @@ const Pagination = ({ totalResults, resultsPerPage, currentPage, setCurrentPage 
         item <= totalPages && (
           <button
             key={index}
-            className={`px-4 py-2 border rounded-md ${item === currentPage ? 'bg-[#6155E2] text-white' : 'hover:bg-gray-200'}`}
+            className={`px-4 py-2 border rounded-md ${item === currentPage ? 'bg-[#2463EB] text-white' : 'hover:bg-gray-200'}`}
             onClick={() => changePage(item)}
           >
             {item}

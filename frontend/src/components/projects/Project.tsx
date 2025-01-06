@@ -6,9 +6,9 @@ import ProjectCard from "./ProjectCard"
 const Project = ({projects, currentPage, setCurrentPage, totalProjects}:any) => {
   return (
     <>
-    <Categories />
+    {/* <Categories /> */}
     
-    <div className="">
+    <div className="bg-black-200 py-5">
       {
         projects?.map((project:any)=>(
           <ProjectCard project={project}/>

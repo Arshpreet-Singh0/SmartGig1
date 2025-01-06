@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import Sidebar from "../navbar/Sidebar";
 import Cards from "./ui/Cards";
-import Nav from "./ui/Nav";
 import Projects from "./ui/Projects";
 import RecentProjects from "./ui/RecentProjects";
 import axios from "axios";
@@ -49,15 +48,11 @@ const FreelancerDashBoard = () => {
     fetchActiveProjects();
   }, []);
   return (
-    <div className="flex">
-      <Sidebar />
-      <div className="flex-1 ">
-        <Nav />
+    <div>
         <Cards projects={projects.length}/>
         <RecentProjects projects={projects}/>
         <Projects projects={projects}/>
         <Proposals />
-      </div>
     </div>
   )
 }
