@@ -4,12 +4,12 @@ import { useEffect, useState } from "react";
 import { FaEye, FaEdit, FaTrashAlt } from "react-icons/fa";
 import { Button } from "../../ui/Button";
 import { useNavigate } from "react-router-dom";
-import type { PopconfirmProps } from "antd";
 import { message, Popconfirm } from "antd";
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 interface Project {
+  id: number;
   title: string;
   category: string;
   User: {
@@ -214,11 +214,21 @@ const Proposals = () => {
                 {/* Actions */}
                 <td className="px-6 py-4">
                   <div className="flex items-center gap-3">
-                    <FaEye className="text-gray-400 hover:text-gray-200 cursor-pointer" />
-                    <FaEdit className="text-gray-400 hover:text-gray-200 cursor-pointer" />
+                    <FaEye
+                      className="text-gray-400 hover:text-gray-200 cursor-pointer"
+                      onClick={() =>
+                        navigate(`/view-bid/${proposal?.project?.id}`)
+                      }
+                    />
+                    <FaEdit
+                      className="text-gray-400 hover:text-gray-200 cursor-pointer"
+                      onClick={() =>
+                        navigate(`/bid/edit/${proposal?.project?.id}`)
+                      }
+                    />
                     <Popconfirm
-                      title="Delete the task"
-                      description="Are you sure to delete this task?"
+                      title="Delete this Proposal"
+                      description="Are you sure to delete this Proposal?"
                       onConfirm={() => confirm(proposal.id)}
                       okText="Yes"
                       cancelText="No"

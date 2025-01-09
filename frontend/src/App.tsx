@@ -8,7 +8,9 @@ import NotFound from "./pages/NotFound";
 import JobPage from "./pages/ProjectPage";
 import DashBoard from "./pages/dashboard/DashBoard";
 import DashBaordPage from "./pages/dashboard/DashBaordPage";
-import PlaceBid from "./pages/dashboard/PlaceBid";
+import PlaceBid from "./pages/dashboard/proposal/PlaceBid";
+import ViewProposal from "./pages/dashboard/proposal/ViewProposal";
+import EditProposal from "./pages/dashboard/proposal/EditProposal";
 
 const routes = createBrowserRouter([
   {
@@ -22,6 +24,8 @@ const routes = createBrowserRouter([
           { path: "/projects", element: <DashBaordPage><JobPage /></DashBaordPage>},
           { path: "/dashboard", element: <DashBaordPage><DashBoard /></DashBaordPage>},
           { path: "/place-bid/:projectId", element: <PlaceBid />},
+          { path: "/view-bid/:projectId", element: <ViewProposal />},
+          { path: "/bid/edit/:projectId", element: <EditProposal />},
           { path: "*", element: <NotFound />},
     ],
   },

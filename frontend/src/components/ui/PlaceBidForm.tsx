@@ -1,24 +1,39 @@
+import React, { useEffect, useState } from "react";
+import { Button } from "./Button";
+import { Input } from "./Input";
 import axios from "axios";
-import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { Input } from "../../components/ui/Input";
-import { Button } from "../../components/ui/Button";
-import { message } from "antd";
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
-const PlaceBid = () => {
-  const [project, setProject] = useState();
-  const navigate = useNavigate();
-  const [input, setInput] = useState({
-    proposedBudget: "",
-    proposedTimeline: "",
-    coverLetter: "",
-  });
-  const { projectId } = useParams();
-
-  const handleChange = (e: any) => {
-    setInput((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+interface propsType {
+  handleChange?: (e: React.ChangeEvent) => void;
+  handleSubmit?: (e: React.FormEvent) => void;
+  input: {
+    proposedBudget: string;
+    proposedTimeline: string;
+    coverLetter: string;
   };
+  disabled?: boolean;
+  editForm? : boolean;
+}
+
+interface Project {
+  id: number;
+  title: string;
+  budget: string;
+  duration: string;
+  experienceLevel: string;
+}
+const PlaceBidForm: React.FC<propsType> = ({
+  input,
+  handleChange,
+  handleSubmit,
+  disabled,
+  editForm,
+}) => {
+  const [project, setProject] = useState<Project | null>();
+  const navigate = useNavigate();
+  const { projectId } = useParams();
 
   useEffect(() => {
     const fetchProject = async () => {
@@ -34,30 +49,14 @@ const PlaceBid = () => {
     };
     fetchProject();
   }, []);
-  
-  const handleSubmit = async(e:React.FormEvent)=>{
-    e.preventDefault();
-    
-    try {
-      const res = await axios.post(`${BACKEND_URL}/api/v1/freelancer/${projectId}`, input, {
-        withCredentials : true,
-      });
-  
-      if(res?.data?.success){
-        message.success(res?.data?.message);
-        navigate('/dashboard');
-      }
-      
-    } catch (error) {
-      console.log(error);
-      message.error(error?.response?.data?.message || "unexpected error");
-    }
-    
-  }
 
+  const handleEditForm = (e:React.FormEvent)=>{
+    e.preventDefault();
+    navigate(`/bid/edit/${project?.id}`)
+  }
   return (
     <div className="w-[80%] mx-auto text-white p-5">
-      <h1 className="text-2xl font-semibold">Submit Proposal</h1>
+      <h1 className="text-2xl font-semibold">{editForm ? 'Edit Proposal' : 'Submit Proposal'}</h1>
       <p className="opacity-75 text-sm mt-1">Project : {project?.title}</p>
 
       <div className="grid grid-cols-3 border border-gray-700 rounded-lg mt-8 p-5 bg-black-200">
@@ -79,7 +78,7 @@ const PlaceBid = () => {
       </div>
 
       <div className="mt-8 border border-gray-700 rounded-lg p-5 bg-black-200">
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={disabled==true ? handleEditForm : handleSubmit} >
           <label htmlFor="" className="text-sm">
             Your bid amount :{" "}
           </label>
@@ -88,10 +87,12 @@ const PlaceBid = () => {
             <div className="flex-1">
               <Input
                 classname="bg-[#404040] border-gray-700 w-full mt-1"
+                type="number"
                 placeholder="Enter your bid amount"
                 name="proposedBudget"
                 value={input.proposedBudget}
                 onChange={handleChange}
+                disabled={disabled}
               />
             </div>
           </div>
@@ -106,6 +107,7 @@ const PlaceBid = () => {
               name="proposedTimeline"
               value={input.proposedTimeline}
               onChange={handleChange}
+              disabled={disabled}
             />
           </div>
           <div className="mt-4">
@@ -119,14 +121,23 @@ const PlaceBid = () => {
               name="coverLetter"
               value={input.coverLetter}
               onChange={handleChange}
+              disabled={disabled}
             ></textarea>
           </div>
 
-          <Button text="Submit" variant="primary" className="mt-5 w-32" />
+          {disabled==true ? (
+            <Button
+              text="Edit Proposal"
+              variant="primary"
+              className="mt-5 w-32"
+            />
+          ) : (
+            <Button text="Submit" variant="primary" className="mt-5 w-32" />
+          )}
         </form>
       </div>
     </div>
   );
 };
 
-export default PlaceBid;
+export default PlaceBidForm;
