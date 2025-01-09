@@ -129,4 +129,51 @@ export const getProjectProposal = async(req:Request, res:Response) : Promise<voi
     } catch (error) {
         console.log(error);
     }
+};
+
+export const deleteProposal = async(req:Request, res:Response) : Promise<void> =>{
+    try {
+        const {proposalId} = req.params;
+        const userId = req.userId;
+
+        const [response, proposals] = await prisma.$transaction([
+            prisma.proposal.delete({
+                where : {
+                    id : Number(proposalId),
+                    freelancerId : Number(userId),
+                }
+            }),
+            prisma.proposal.findMany({
+                where : {
+                    freelancerId : Number(userId),
+                },
+                include: {
+                    project : {
+                        include : {
+                            User : {
+                                select : {
+                                    name : true,
+                                }
+                            }
+                        }
+                    }
+                }
+            })
+        ]);
+
+        if(!response){
+            res.status(404).json({
+                message : "Proposal not found",
+            });
+            return;
+        }
+        res.status(200).json({
+            message : "Proposal deleted successfully",
+            success : true,
+            proposals
+        })
+    } catch (error) {
+        console.log(error);
+        
+    }
 }

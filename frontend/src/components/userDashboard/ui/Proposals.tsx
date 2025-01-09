@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { FaEye, FaEdit, FaTrashAlt } from "react-icons/fa";
 import { Button } from "../../ui/Button";
 import { useNavigate } from "react-router-dom";
+import type { PopconfirmProps } from "antd";
+import { message, Popconfirm } from "antd";
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
@@ -30,11 +32,38 @@ const Proposals = () => {
   const [proposals, setProposals] = useState<Proposal[]>([]);
   const navigate = useNavigate();
 
+  const confirm = async (id: number) => {
+    try {
+      const res = await axios.delete(
+        `${BACKEND_URL}/api/v1/freelancer/proposal/${id}`,
+        {
+          withCredentials: true,
+        }
+      );
+      console.log(res);
+
+      if (res?.data?.success) {
+        message.success(res?.data?.message);
+        setProposals(res?.data?.proposals);
+      }
+    } catch (error) {
+      console.log(error);
+      if (axios.isAxiosError(error)) {
+        const errorMessage =
+          error.response?.data?.message || "An unexpected error occurred.";
+        message.error(errorMessage);
+      } else {
+        message.error("Something went wrong.");
+        console.error(error);
+      }
+    }
+  };
+
   useEffect(() => {
     const fetchProposals = async () => {
       try {
         const res = await axios.get(
-          `${BACKEND_URL}/api/v1/freelancer/proposals`,
+          `${BACKEND_URL}/api/v1/freelancer/proposal`,
           {
             withCredentials: true,
           }
@@ -57,9 +86,14 @@ const Proposals = () => {
           </p>
         </div>
         <div>
-          <Button text="New Proposal" variant="primary" startIcon={<Plus />} className="py-3" onClick={()=>navigate('/projects')}/>
+          <Button
+            text="New Proposal"
+            variant="primary"
+            startIcon={<Plus />}
+            className="py-3"
+            onClick={() => navigate("/projects")}
+          />
         </div>
-
       </div>
 
       <div className="mt-5 border border-gray-700 rounded-lg bg-black-200">
@@ -154,6 +188,7 @@ const Proposals = () => {
                     <p className="text-sm opacity-60">
                       {proposal.createdAt &&
                         `${Math.floor(
+                          // @ts-ignore
                           (new Date() - new Date(proposal.createdAt)) /
                             (1000 * 60 * 60 * 24)
                         )} days ago`}
@@ -181,7 +216,15 @@ const Proposals = () => {
                   <div className="flex items-center gap-3">
                     <FaEye className="text-gray-400 hover:text-gray-200 cursor-pointer" />
                     <FaEdit className="text-gray-400 hover:text-gray-200 cursor-pointer" />
-                    <FaTrashAlt className="text-red-500 hover:text-red-400 cursor-pointer" />
+                    <Popconfirm
+                      title="Delete the task"
+                      description="Are you sure to delete this task?"
+                      onConfirm={() => confirm(proposal.id)}
+                      okText="Yes"
+                      cancelText="No"
+                    >
+                      <FaTrashAlt className="text-red-500 hover:text-red-400 cursor-pointer" />
+                    </Popconfirm>
                   </div>
                 </td>
               </tr>

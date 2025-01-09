@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import Sidebar from "../navbar/Sidebar";
 import Cards from "./ui/Cards";
 import Projects from "./ui/Projects";
 import RecentProjects from "./ui/RecentProjects";
