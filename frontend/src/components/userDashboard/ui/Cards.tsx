@@ -25,7 +25,7 @@ interface props {
     icon : React.ReactElement
 }
 
-const Card : React.FC<props>  = ({heading, number, icon}) => {
+export const Card : React.FC<props>  = ({heading, number, icon}) => {
     return (
         <div className="bg-black-200 h-28 rounded-lg border border-gray-700 p-4">
             <div className="flex justify-between items-center">

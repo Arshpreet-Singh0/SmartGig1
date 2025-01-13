@@ -47,6 +47,9 @@ export const getClientProjects = async (
       const projects = await prisma.project.findMany({
         where: {
           userId: Number(userId),
+          freelancer : {
+            isNot : null
+          }
         },
         include: {
           freelancer: {
