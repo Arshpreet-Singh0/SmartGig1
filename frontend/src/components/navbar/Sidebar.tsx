@@ -9,9 +9,11 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import { useAppSelector } from "../../hooks/hook";
+import { useNavigate } from "react-router-dom";
 
 const Sidebar = () => {
   const [selected, setSlected] = useState(1);
+  const navigate = useNavigate();
   const { user } = useAppSelector((store) => store.auth);
   return (
     <div className="flex flex-col gap-4 bg-[#262626] w-64 h-screen sticky top-0 z-10 text-[#DBDBDB] px-6 border-r border-gray-700">
@@ -84,17 +86,16 @@ const Sidebar = () => {
               Projects
             </div>
           </a>
-          <a href={"#projects"} className="text-sm">
             <div
               className={`flex items-center px-3 py-[0.75rem] rounded-lg ${
                 selected == 3 ? "bg-[#404040]" : ""
               } hover:bg-[#404040]`}
-              onClick={() => setSlected(3)}
+              onClick={() => navigate('/post-project')}
+
             >
               <Plus className="mr-4" width={22} />
               Post
             </div>
-          </a>
           <a href={"#projects"} className="text-sm">
             <div
               className={`flex items-center px-3 py-[0.75rem] rounded-lg ${

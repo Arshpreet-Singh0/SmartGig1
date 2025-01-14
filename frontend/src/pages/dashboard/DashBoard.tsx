@@ -3,7 +3,7 @@ import { useAppSelector } from "../../hooks/hook";
 import { isUserLoggedIn } from "../../redux/authSlice";
 import { useNavigate } from "react-router-dom";
 import { message } from "antd";
-import ClientDashBoard from "../../components/clientDashboard/DashBoard";
+import ClientDashBoard from "../../components/client/clientDashboard/DashBoard";
 import FreelancerDashBoard from "../../components/userDashboard/DashBoard";
 
 const DashBoard = () => {

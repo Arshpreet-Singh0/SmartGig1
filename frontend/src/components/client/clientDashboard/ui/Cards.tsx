@@ -1,6 +1,6 @@
 import { CheckCircleOutlined } from "@ant-design/icons";
 import { CircleDollarSign, Clock4, MessageSquareMore } from "lucide-react";
-import { Card } from "../../userDashboard/ui/Cards";
+import { Card } from "../../../userDashboard/ui/Cards";
 
 // interface Props {
 //     projects : number,

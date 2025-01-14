@@ -8,6 +8,7 @@ interface ButtonProps {
   fullWidth?: boolean;
   loading?: boolean;
   className?: string;
+  type? : "submit" | "button"
 }
 
 const variantClasses = {
@@ -27,10 +28,12 @@ export function Button({
   fullWidth,
   loading,
   className,
+  type
 }: ButtonProps) {
   return (
     <button
       onClick={onClick}
+      type={type}
       className={
         variantClasses[variant] +
         " " +

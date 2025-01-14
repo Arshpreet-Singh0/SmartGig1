@@ -11,6 +11,7 @@ import DashBaordPage from "./pages/dashboard/DashBaordPage";
 import PlaceBid from "./pages/dashboard/proposal/PlaceBid";
 import ViewProposal from "./pages/dashboard/proposal/ViewProposal";
 import EditProposal from "./pages/dashboard/proposal/EditProposal";
+import PostProject from "./pages/client/PostProject";
 
 const routes = createBrowserRouter([
   {
@@ -26,6 +27,7 @@ const routes = createBrowserRouter([
           { path: "/place-bid/:projectId", element: <PlaceBid />},
           { path: "/view-bid/:projectId", element: <ViewProposal />},
           { path: "/bid/edit/:projectId", element: <EditProposal />},
+          { path: "/post-project", element: <DashBaordPage><PostProject /></DashBaordPage>},
           { path: "*", element: <NotFound />},
     ],
   },
