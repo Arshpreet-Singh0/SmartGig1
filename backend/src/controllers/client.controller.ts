@@ -167,3 +167,26 @@ export const getProposals = async (
         console.log(error);
     }
   }
+
+export const getClientPendingProject = async (
+  req: Request,
+  res: Response
+): Promise<void> =>{
+  try {
+    const userId = req.userId;
+
+    const projects = await prisma.project.findMany({
+      where : {
+        userId : Number(userId),
+        freelancer : null,
+      }
+    });
+
+    res.status(200).json({
+      projects,
+    })
+  } catch (error) {
+    console.log(error);
+    
+  }
+}

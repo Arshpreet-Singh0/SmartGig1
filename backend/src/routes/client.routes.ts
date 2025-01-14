@@ -1,12 +1,14 @@
 import express from "express";
 import { isAuthenticated } from "../middlewares/isAuthenticated";
-import { acceptProposal, createProject, getClientProjects, getProposals } from "../controllers/client.controller";
+import { acceptProposal, createProject, getClientPendingProject, getClientProjects, getProposals } from "../controllers/client.controller";
 
 const router = express.Router();
 
 router.route("/").post(isAuthenticated, createProject);
 
 router.route('/projects').get(isAuthenticated, getClientProjects);
+
+router.route('/pending-projects').get(isAuthenticated, getClientPendingProject);
 
 router.route('/proposals/:projectId').get(isAuthenticated, getProposals);
 
