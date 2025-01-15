@@ -49,7 +49,7 @@ const ProjectCard = ({ project }: any) => {
           <p className="text-white font-bold">&#8377; {project.budget}</p>
           <p className="text-sm text-gray-500">Fixed Price</p>
 
-          <Button text="Place Bid" variant="primary" className="mt-10" onClick={()=>navigate(`/place-bid/${project.id}`)}/>
+          <Button text="View Details" variant="primary" className="mt-10" onClick={()=>navigate(`/view-deatils/${project.id}`)}/>
         </div>
       </div>
     </div>

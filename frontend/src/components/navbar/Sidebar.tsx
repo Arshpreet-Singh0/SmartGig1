@@ -109,7 +109,7 @@ const Sidebar = () => {
           </a>
           <div
             className={`flex items-center px-3 py-[0.75rem] rounded-lg ${
-              selected == 4 ? "bg-[#404040]" : ""
+              selected == 5 ? "bg-[#404040]" : ""
             } hover:bg-[#404040]`}
             onClick={() => setSlected(5)}
           >
@@ -119,7 +119,7 @@ const Sidebar = () => {
           <a href="#Proposals" className="text-sm">
             <div
               className={`flex items-center px-3 py-[0.75rem] rounded-lg ${
-                selected == 5 ? "bg-[#404040]" : ""
+                selected == 6 ? "bg-[#404040]" : ""
               } hover:bg-[#404040]`}
               onClick={() => setSlected(6)}
             >

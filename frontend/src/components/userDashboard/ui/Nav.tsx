@@ -12,7 +12,7 @@ const Nav = () => {
       navigate('/signin?next=/dashboard');
   }
   return (
-    <div className="flex items-center justify-between h-20 bg-black-200 w-full px-6 text-white sticky top-0 border-b border-gray-700">
+    <div className="flex items-center justify-between h-20 bg-black-200 w-full px-6 text-white sticky top-0 border-b border-gray-700 z-10">
         <div>
             <h2 className="text-xl font-semibold">Dashbaord</h2>
         </div>

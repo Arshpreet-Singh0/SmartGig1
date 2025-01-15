@@ -12,6 +12,7 @@ import PlaceBid from "./pages/dashboard/proposal/PlaceBid";
 import ViewProposal from "./pages/dashboard/proposal/ViewProposal";
 import EditProposal from "./pages/dashboard/proposal/EditProposal";
 import PostProject from "./pages/client/PostProject";
+import ViewProjectDetails from "./pages/projects/ViewProjectDetails";
 
 const routes = createBrowserRouter([
   {
@@ -28,6 +29,7 @@ const routes = createBrowserRouter([
           { path: "/view-bid/:projectId", element: <ViewProposal />},
           { path: "/bid/edit/:projectId", element: <EditProposal />},
           { path: "/post-project", element: <DashBaordPage><PostProject /></DashBaordPage>},
+          { path: "/view-deatils/:projectId", element: <DashBaordPage><ViewProjectDetails /></DashBaordPage>},
           { path: "*", element: <NotFound />},
     ],
   },
