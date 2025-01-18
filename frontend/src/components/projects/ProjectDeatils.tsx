@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Button } from "../ui/Button";
+import { Check, Clock4, Globe, MessageSquareText, User2 } from "lucide-react";
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
@@ -100,8 +101,12 @@ const ProjectDetails = () => {
       </div>
 
       <div className="flex justify-center gap-10 mt-10">
-        <Button text="Place Bid" variant="primary" className="px-9 py-3"/>
-        <Button text="Chat With Client" variant="outline" className="px-9 py-3 border-none bg-[#404040] text-white"/>
+        <Button text="Place Bid" variant="primary" className="px-9 py-3" />
+        <Button
+          text="Chat With Client"
+          variant="outline"
+          className="px-9 py-3 border-none bg-[#404040] text-white"
+        />
       </div>
 
       <div className="mt-16 p-6 bg-black-200 rounded-lg text-white">
@@ -109,12 +114,72 @@ const ProjectDetails = () => {
 
         <p className="opacity-75 mt-2">{project.description}</p>
         <div className="mt-5">
-          {
-            project?.skillsRequired?.map((s)=>(
-              <span className="bg-[#404040] mr-2 px-2 py-1 rounded-full">{s}</span>
-            ))
-          }
+          {project?.skillsRequired?.map((s) => (
+            <span className="bg-[#404040] mr-2 px-2 py-1 rounded-full">
+              {s}
+            </span>
+          ))}
+        </div>
+      </div>
 
+      <div className="mt-10 bg-black-200 p-6 rounded-lg">
+        <h1 className="text-2xl text-white font-semibold">
+          Client Information
+        </h1>
+        <div className="flex">
+          <div className="mt-5 text-white w-1/2">
+            <div className="flex gap-5">
+              <div className="flex justify-center items-center w-14 h-14 rounded-full border">
+                <User2 className="text-blue-500" />
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold">{project?.User.name}</h3>
+                <p className="opacity-65">Tech Company CEO</p>
+              </div>
+            </div>
+
+            <div className="mt-5 p-2">
+              <p className="flex gap-5">
+                <Globe className="text-blue-500" />
+                <p className="opacity-70">United States</p>
+              </p>
+              <p className="flex gap-5 mt-3">
+                <Clock4 className="text-blue-500" />
+                <p className="opacity-70">Member since 2024</p>
+              </p>
+              <p className="flex gap-5 mt-3">
+                <Check className="text-blue-500" />
+                <p className="opacity-70">Payment Verified</p>
+              </p>
+            </div>
+          </div>
+          <div className="flex flex-col items-center rounded-lg flex-1 mt-5">
+            <div className="bg-[#404040] p-4 w-full rounded-lg">
+              <h2 className="text-xl text-white font-semibold">Client Statistics</h2>
+
+                <div className="grid grid-cols-2 mt-2 text-white gap-y-4">
+                  <div className="col-span-1 text-center">
+                    <h2 className="text-blue-500 text-3xl font-semibold ">15</h2>
+                    <p className="opacity-70">Projects Posted</p>
+                  </div>
+                  <div className="col-span-1 text-center">
+                    <h2 className="text-blue-500 text-3xl font-semibold ">12</h2>
+                    <p className="opacity-70">Completed Projects</p>
+                  </div>
+                  <div className="col-span-1 text-center">
+                    <h2 className="text-blue-500 text-3xl font-semibold ">4.8</h2>
+                    <p className="opacity-70">Average Rating</p>
+                  </div>
+                  <div className="col-span-1 text-center">
+                    <h2 className="text-blue-500 text-3xl font-semibold ">98%</h2>
+                    <p className="opacity-70">Payment Success</p>
+                  </div>
+                </div>
+                
+            </div>
+
+            <Button text="Contact Client" variant="primary" startIcon={<MessageSquareText />} className="mt-5 py-3" fullWidth/>
+          </div>
         </div>
       </div>
     </div>

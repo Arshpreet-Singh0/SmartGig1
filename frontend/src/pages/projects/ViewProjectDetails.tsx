@@ -2,7 +2,7 @@ import ProjectDeatils from "../../components/projects/ProjectDeatils";
 
 const ViewProjectDetails = () => {
   return (
-    <div className="p-6">
+    <div className="">
       <ProjectDeatils />
     </div>
   );
