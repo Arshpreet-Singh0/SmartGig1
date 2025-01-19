@@ -157,6 +157,15 @@ export const getProposals = async (
         const proposals = await prisma.proposal.findMany({
             where : {
                 projectId : Number(projectId),
+            },
+            include : {
+              freelancer : {
+                select : {
+                  name : true,
+                  ratingCount : true,
+                  role : true
+                }
+              }
             }
         });
 

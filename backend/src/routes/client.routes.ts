@@ -10,7 +10,7 @@ router.route('/projects').get(isAuthenticated, getClientProjects);
 
 router.route('/pending-projects').get(isAuthenticated, getClientPendingProject);
 
-router.route('/proposals/:projectId').get(isAuthenticated, getProposals);
+router.route('/proposals/:projectId').get(getProposals);
 
 router.route('/accept-proposal/:projectId/:proposalId').post(isAuthenticated, acceptProposal);
 

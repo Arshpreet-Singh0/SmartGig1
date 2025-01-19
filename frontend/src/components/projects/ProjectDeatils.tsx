@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Button } from "../ui/Button";
 import { Check, Clock4, Globe, MessageSquareText, User2 } from "lucide-react";
 
@@ -30,6 +30,7 @@ interface Project {
 const ProjectDetails = () => {
   const [project, setProject] = useState<Project | null>(null);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const { projectId } = useParams();
 
@@ -101,7 +102,7 @@ const ProjectDetails = () => {
       </div>
 
       <div className="flex justify-center gap-10 mt-10">
-        <Button text="Place Bid" variant="primary" className="px-9 py-3" />
+        <Button text="Place Bid" variant="primary" className="px-9 py-3" onClick={()=>navigate(`/place-bid/${projectId}`)}/>
         <Button
           text="Chat With Client"
           variant="outline"
