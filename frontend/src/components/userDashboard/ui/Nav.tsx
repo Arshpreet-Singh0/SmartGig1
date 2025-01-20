@@ -2,6 +2,7 @@ import { Bell } from "lucide-react"
 import { Link, useNavigate } from "react-router-dom"
 import { clearUser } from '../../../redux/authSlice' 
 import { useDispatch } from "react-redux";
+import ThemeToggle from "../../ui/ThemeToggle";
 
 const Nav = () => {
   const dispatch = useDispatch();
@@ -17,6 +18,7 @@ const Nav = () => {
             <h2 className="text-xl font-semibold">Dashbaord</h2>
         </div>
         <div className="flex justify-center items-center gap-10">
+          <ThemeToggle />
             <Link to={'/projects'} >All Projects</Link>
             <Bell className="opacity-60"/>
             <p className="cursor-pointer" onClick={logout}>Logout</p>

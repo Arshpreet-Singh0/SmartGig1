@@ -50,7 +50,6 @@ const ProjectDetails = () => {
     };
     fetchProject();
   }, [projectId]);
-  console.log(project);
 
   if (loading) {
     return (
@@ -70,9 +69,12 @@ const ProjectDetails = () => {
     );
   }
 
+  console.log(project);
+  
+
   return (
-    <div className="w-[90%] md:w-[80%] mx-auto mt-10">
-      <div className="text-center text-white">
+    <div className="w-[90%] md:w-[80%] mx-auto pt-10 text-black dark:text-white">
+      <div className="text-center">
         <h1 className="text-4xl font-semibold">{project.title}</h1>
         <p className="mt-2 text-gray-400 text-lg">
           Posted {daysAgo(project.createdAt)} days ago
@@ -80,23 +82,23 @@ const ProjectDetails = () => {
       </div>
 
       <div className="grid grid-cols-3 gap-5 mt-10">
-        <div className="p-4 rounded-lg bg-black-200 h-36 text-center">
+        <div className="p-4 rounded-lg bg-white dark:bg-black-200 h-36 text-center">
           <h2 className="text-white text-2xl font-semibold">Budget</h2>
-          <h2 className="text-[#5FA5F9] text-3xl font-semibold mt-2">
+          <h2 className="text-blue-600 text-3xl font-semibold mt-2">
             &#8377; {project.budget}
           </h2>
           <p className="text-lg text-gray-500">Fixed Price</p>
         </div>
-        <div className="p-4 rounded-lg bg-black-200 h-36 text-center">
+        <div className="p-4 rounded-lg bg-white dark:bg-black-200 h-36 text-center">
           <h2 className="text-white text-2xl font-semibold">Timeline</h2>
-          <h2 className="text-[#5FA5F9] text-3xl font-semibold mt-2">
+          <h2 className="text-blue-600 text-3xl font-semibold mt-2">
             {project.duration}
           </h2>
           <p className="text-lg text-gray-500">Expected Duration</p>
         </div>
-        <div className="p-4 rounded-lg bg-black-200 h-36 text-center">
+        <div className="p-4 rounded-lg bg-white dark:bg-black-200 h-36 text-center">
           <h2 className="text-white text-2xl font-semibold">Proposals</h2>
-          <h2 className="text-[#5FA5F9] text-3xl font-semibold mt-2">12</h2>
+          <h2 className="text-blue-600 text-3xl font-semibold mt-2">12</h2>
           <p className="text-lg text-gray-500">Submitted Bids</p>
         </div>
       </div>
@@ -106,29 +108,29 @@ const ProjectDetails = () => {
         <Button
           text="Chat With Client"
           variant="outline"
-          className="px-9 py-3 border-none bg-[#404040] text-white"
+          className="px-9 py-3 border-none dark:bg-[#404040] bg-white text-black dark:text-white"
         />
       </div>
 
-      <div className="mt-16 p-6 bg-black-200 rounded-lg text-white">
+      <div className="mt-16 p-6 bg-white dark:bg-black-200 rounded-lg dark:text-white">
         <h3 className="text-2xl font-semibold">Project Brief</h3>
 
         <p className="opacity-75 mt-2">{project.description}</p>
         <div className="mt-5">
           {project?.skillsRequired?.map((s) => (
-            <span className="bg-[#404040] mr-2 px-2 py-1 rounded-full">
+            <span className="bg-gray-200 dark:bg-[#404040] mr-2 px-2 py-1 rounded-full">
               {s}
             </span>
           ))}
         </div>
       </div>
 
-      <div className="mt-10 bg-black-200 p-6 rounded-lg">
-        <h1 className="text-2xl text-white font-semibold">
+      <div className="mt-10 dark:bg-black-200 p-6 rounded-lg text-[#000] dark:text-white">
+        <h1 className="text-2xl font-semibold">
           Client Information
         </h1>
         <div className="flex">
-          <div className="mt-5 text-white w-1/2">
+          <div className="mt-5 w-1/2">
             <div className="flex gap-5">
               <div className="flex justify-center items-center w-14 h-14 rounded-full border">
                 <User2 className="text-blue-500" />
@@ -155,10 +157,10 @@ const ProjectDetails = () => {
             </div>
           </div>
           <div className="flex flex-col items-center rounded-lg flex-1 mt-5">
-            <div className="bg-[#404040] p-4 w-full rounded-lg">
-              <h2 className="text-xl text-white font-semibold">Client Statistics</h2>
+            <div className="bg-gray-200 dark:bg-[#404040] p-4 w-full rounded-lg text-[#000] dark:text-white">
+              <h2 className="text-xl font-semibold">Client Statistics</h2>
 
-                <div className="grid grid-cols-2 mt-2 text-white gap-y-4">
+                <div className="grid grid-cols-2 mt-2 gap-y-4">
                   <div className="col-span-1 text-center">
                     <h2 className="text-blue-500 text-3xl font-semibold ">15</h2>
                     <p className="opacity-70">Projects Posted</p>

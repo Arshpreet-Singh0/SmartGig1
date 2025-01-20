@@ -116,7 +116,7 @@ const PlaceBidForm: React.FC<propsType> = ({
             </label>
             <textarea
               className="bg-[#404040] border-gray-700 w-full mt-4 rounded-lg p-3"
-              rows={4}
+              rows={6}
               placeholder="Explain why you are best fit for this project..."
               name="coverLetter"
               value={input.coverLetter}

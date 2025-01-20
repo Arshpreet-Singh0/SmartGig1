@@ -4,8 +4,19 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
+interface Proposal{
+  coverLetter : string;
+  proposedBudget : string;
+  proposedTimeline : string;
+  freelancer : {
+    name : string;
+    ratingCount : string;
+  }
+
+}
+
 const ProjectProposals = () => {
-  const [proposals, setProposals] = useState([]);
+  const [proposals, setProposals] = useState<Proposal[]>([]);
   const {projectId} = useParams();
 
   useEffect(()=>{
@@ -23,17 +34,17 @@ const ProjectProposals = () => {
     fetchProposals();
   },[])
   return (
-    <div className="mt-10 bg-black-200 p-10">
+    <div className="mt-10 bg-gray-200 dark:bg-black-200 p-10 text-[#000] dark:text-white">
       <div className="w-[80%] mx-auto">
           <h1 className="text-2xl text-white font-semibold">Project Proposals</h1>
 
           <div className="mt-5">
               {
                 proposals?.map((proposal)=>(
-                  <div className="p-5 rounded-lg bg-[#404040] text-white">
+                  <div className="p-5 rounded-lg bg-gray-50 dark:bg-[#404040] mb-5">
                     <div className="flex justify-between">
                       <div className="flex gap-5">
-                        <div className="flex justify-center items-center h-12 w-12 rounded-full bg-[#525252]">
+                        <div className="flex justify-center items-center h-12 w-12 rounded-full bg-white dark:bg-[#525252]">
                           <User2 className="text-blue-500"/>
                         </div>
 
