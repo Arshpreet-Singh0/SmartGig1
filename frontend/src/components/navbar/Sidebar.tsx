@@ -16,16 +16,18 @@ const Sidebar = () => {
   const navigate = useNavigate();
   const { user } = useAppSelector((store) => store.auth);
   return (
-    <div className="flex flex-col gap-4 bg-[#262626] w-64 h-screen sticky top-0 z-10 text-[#DBDBDB] px-6 border-r border-gray-700">
+    <div className="flex flex-col gap-4 bg-gray-50 dark:bg-[#262626] w-64 h-screen sticky top-0 z-10 text-[#DBDBDB] px-6 border-r dark:border-gray-700">
       <div className="flex items-center h-16">
-        <h1 className="text-3xl font-semibold">Smart Gig</h1>
+        <h1 className="text-3xl font-semibold text-[#000] dark:text-[#DBDBDB]">
+          Smart Gig
+        </h1>
       </div>
       {user.accountType == "FREELANCER" ? (
         <>
           <div
-            className={`flex items-center px-3 py-[0.75rem] rounded-lg ${
-              selected == 1 ? "bg-[#404040]" : ""
-            } hover:bg-[#404040]`}
+            className={`flex items-center px-3 py-[0.75rem] rounded-lg text-[#000] dark:text-white ${
+              selected == 1 ? "bg-gray-200 dark:bg-[#404040]" : ""
+            } dark:hover:bg-[#404040] hover:bg-gray-200`}
             onClick={() => setSlected(1)}
           >
             <Menu className="mr-4" width={22} />
@@ -33,9 +35,9 @@ const Sidebar = () => {
           </div>
           <a href={"#projects"} className="text-sm">
             <div
-              className={`flex items-center px-3 py-[0.75rem] rounded-lg ${
+              className={`flex items-center px-3 py-[0.75rem] rounded-lg text-[#000] dark:text-white ${
                 selected == 2 ? "bg-[#404040]" : ""
-              } hover:bg-[#404040]`}
+              } dark:hover:bg-[#404040] hover:bg-gray-200`}
               onClick={() => setSlected(2)}
             >
               <WalletCards className="mr-4" width={22} />
@@ -43,9 +45,9 @@ const Sidebar = () => {
             </div>
           </a>
           <div
-            className={`flex items-center px-3 py-[0.75rem] rounded-lg ${
+            className={`flex items-center px-3 py-[0.75rem] rounded-lg text-[#000] dark:text-white ${
               selected == 3 ? "bg-[#404040]" : ""
-            } hover:bg-[#404040]`}
+            } dark:hover:bg-[#404040] hover:bg-gray-200`}
             onClick={() => setSlected(3)}
           >
             <MessageSquareMore className="mr-4" width={22} />
@@ -53,9 +55,9 @@ const Sidebar = () => {
           </div>
           <a href="#Proposals" className="text-sm">
             <div
-              className={`flex items-center px-3 py-[0.75rem] rounded-lg ${
+              className={`flex items-center px-3 py-[0.75rem] rounded-lg text-[#000] dark:text-white ${
                 selected == 4 ? "bg-[#404040]" : ""
-              } hover:bg-[#404040]`}
+              } dark:hover:bg-[#404040] hover:bg-gray-200`}
               onClick={() => setSlected(4)}
             >
               <FileText className="mr-4" width={22} />
@@ -67,9 +69,9 @@ const Sidebar = () => {
       ) : (
         <>
           <div
-            className={`flex items-center px-3 py-[0.75rem] rounded-lg ${
+            className={`flex items-center px-3 py-[0.75rem] rounded-lg text-[#000] dark:text-white ${
               selected == 1 ? "bg-[#404040]" : ""
-            } hover:bg-[#404040]`}
+            } dark:hover:bg-[#404040] hover:bg-gray-200`}
             onClick={() => setSlected(1)}
           >
             <Home className="mr-4" width={22} />
@@ -77,30 +79,29 @@ const Sidebar = () => {
           </div>
           <a href={"#projects"} className="text-sm">
             <div
-              className={`flex items-center px-3 py-[0.75rem] rounded-lg ${
+              className={`flex items-center px-3 py-[0.75rem] rounded-lg text-[#000] dark:text-white ${
                 selected == 2 ? "bg-[#404040]" : ""
-              } hover:bg-[#404040]`}
+              } dark:hover:bg-[#404040] hover:bg-gray-200`}
               onClick={() => setSlected(2)}
             >
               <FileText className="mr-4" width={22} />
               Projects
             </div>
           </a>
-            <div
-              className={`flex items-center px-3 py-[0.75rem] rounded-lg ${
-                selected == 3 ? "bg-[#404040]" : ""
-              } hover:bg-[#404040]`}
-              onClick={() => navigate('/post-project')}
-
-            >
-              <Plus className="mr-4" width={22} />
-              Post
-            </div>
+          <div
+            className={`flex items-center px-3 py-[0.75rem] rounded-lg text-[#000] dark:text-white ${
+              selected == 3 ? "bg-[#404040]" : ""
+            } dark:hover:bg-[#404040] hover:bg-gray-200`}
+            onClick={() => navigate("/post-project")}
+          >
+            <Plus className="mr-4" width={22} />
+            Post
+          </div>
           <a href={"#projects"} className="text-sm">
             <div
-              className={`flex items-center px-3 py-[0.75rem] rounded-lg ${
+              className={`flex items-center px-3 py-[0.75rem] rounded-lg text-[#000] dark:text-white ${
                 selected == 4 ? "bg-[#404040]" : ""
-              } hover:bg-[#404040]`}
+              } dark:hover:bg-[#404040] hover:bg-gray-200`}
               onClick={() => setSlected(4)}
             >
               <User className="mr-4" width={22} />
@@ -108,9 +109,9 @@ const Sidebar = () => {
             </div>
           </a>
           <div
-            className={`flex items-center px-3 py-[0.75rem] rounded-lg ${
+            className={`flex items-center px-3 py-[0.75rem] rounded-lg text-[#000] dark:text-white ${
               selected == 5 ? "bg-[#404040]" : ""
-            } hover:bg-[#404040]`}
+            } dark:hover:bg-[#404040] hover:bg-gray-200`}
             onClick={() => setSlected(5)}
           >
             <MessageSquareMore className="mr-4" width={22} />
@@ -118,9 +119,9 @@ const Sidebar = () => {
           </div>
           <a href="#Proposals" className="text-sm">
             <div
-              className={`flex items-center px-3 py-[0.75rem] rounded-lg ${
+              className={`flex items-center px-3 py-[0.75rem] rounded-lg text-[#000] dark:text-white ${
                 selected == 6 ? "bg-[#404040]" : ""
-              } hover:bg-[#404040]`}
+              } dark:hover:bg-[#404040] hover:bg-gray-200`}
               onClick={() => setSlected(6)}
             >
               <FileText className="mr-4" width={22} />

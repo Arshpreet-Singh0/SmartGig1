@@ -13,7 +13,7 @@ const ThemeToggle = () => {
       root.style.backgroundColor = "#000000"; 
     } else {
       root.classList.remove("dark");
-      root.style.backgroundColor = "#171717";
+      root.style.backgroundColor = "#fff";
     }
     localStorage.setItem("theme", theme);
   }, [theme]);
@@ -27,7 +27,7 @@ const ThemeToggle = () => {
       onClick={toggleTheme}
       className="p-2 text-black text-white"
     >
-      <SunMoon className="opacity-60"/>
+      <SunMoon className="opacity-80 text-[#000] dark:text-white"/>
     </button>
   );
 };

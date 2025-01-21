@@ -27,8 +27,8 @@ interface props {
 
 const Projects: React.FC<props> = ({ projects }) => {
   return (
-    <div className="p-6 text-white" id="projects">
-      <div className=" p-2 pb-4 rounded-lg">
+    <div className="p-6 dark:text-white" id="projects">
+      <div className=" p-2 pb-4 rounded-lg bg-white dark:bg-black-200">
         <div className="border-b border-gray-700 p-4">
           <h1 className="text-2xl font-semibold">Projects</h1>
           <p className="opacity-60 text-md">
@@ -62,12 +62,12 @@ interface ProjectCardProps {
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   return (
-    <div className="border border-gray-700 rounded-lg text-white bg-black-200">
+    <div className="border dark:border-gray-700 rounded-lg dark:text-white dark:bg-black-200 bg-gray-100">
       <div className="p-4">
         <h2 className="font-semibold text-lg">{project.title}</h2>
         <p className="text-gray-400 text-sm">Client : {project.User.name}</p>
 
-        <div className="py-5 text-gray-400">{project.description}</div>
+        <div className="py-5 text-gray-400 h-24 overflow-x-auto">{project.description}</div>
 
         <p className="flex text-gray-400">
           <Clock4 className="mr-2" width={18} /> Due in{" "}

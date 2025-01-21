@@ -77,8 +77,8 @@ const Proposals = () => {
   }, []);
 
   return (
-    <div className="p-6 text-white font-inter" id="Proposals">
-      <div className="flex justify-between items-center mb-8">
+    <div className="p-6 dark:bg-black-100 dark:text-white font-inter bg-white" id="Proposals">
+      <div className="p-2 flex justify-between items-center mb-8 rounded-lg">
         <div>
           <h1 className="text-2xl font-semibold">Proposals</h1>
           <p className="opacity-60 text-md">
@@ -96,10 +96,10 @@ const Proposals = () => {
         </div>
       </div>
 
-      <div className="mt-5 border border-gray-700 rounded-lg bg-black-200">
-        <table className="w-full border-collapse table-auto bg-black-200 text-white">
+      <div className="mt-5 border dark:border-gray-700 rounded-lg dark:bg-black-200 ">
+        <table className="w-full border-collapse table-auto bg-white dark:bg-black-200 text-white">
           <thead>
-            <tr className="text-sm uppercase bg-black-200">
+            <tr className="text-sm uppercase text-[#000] bg-white dark:bg-black-200">
               <th className="px-6 py-4 text-left font-medium">Project</th>
               <th className="px-6 py-4 text-left font-medium">Client</th>
               <th className="px-6 py-4 text-left font-medium">Amount</th>
@@ -112,7 +112,7 @@ const Proposals = () => {
             {proposals.map((proposal, index) => (
               <tr
                 key={proposal.id}
-                className="bg-black-200 hover:bg-gray-700 transition border-t border-gray-700"
+                className="text-[#000] dark:bg-black-200 hover:bg-gray-700 transition border-t border-gray-700"
               >
                 {/* Project Details */}
                 <td className="px-6 py-4 text-left">

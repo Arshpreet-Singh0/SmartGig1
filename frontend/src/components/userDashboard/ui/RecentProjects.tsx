@@ -29,28 +29,28 @@ const RecentProjects : React.FC<props> = ({projects}) => {
   return (
     <div className="p-6">
       {/* Wrapper container with fixed height */}
-      <div className="bg-black-200 rounded-lg h-[18rem]">
+      <div className="bg-white dark:bg-black-200 rounded-lg h-[18rem]">
         {/* Header */}
-        <div className="p-4 border-b border-gray-700">
-          <h2 className="text-xl font-semibold text-white">Recent Projects</h2>
+        <div className="p-4 border-b dark:border-gray-700">
+          <h2 className="text-xl font-semibold dark:text-white">Recent Projects</h2>
         </div>
         {/* Content Container with Scroll */}
         <div className="flex flex-col gap-4 p-4 overflow-y-scroll h-[15rem]">
           {projects.length > 0 ? (
             projects.slice(0,2).map((project:Project, index:number) => (
               <div
-                className="flex px-6 py-4 bg-[#2B2B2B] rounded-lg"
+                className="flex px-6 py-4 bg-gray-100 dark:bg-[#2B2B2B] rounded-lg"
                 key={index}
               >
                 <div className="flex justify-between w-full">
                   <div className="flex">
                     {/* Icon */}
-                    <div className="flex items-center justify-center w-12 h-12 bg-[#404040] rounded-lg">
+                    <div className="flex items-center justify-center w-12 h-12 bg- dark:bg-[#404040] rounded-lg">
                       <FileText className="text-blue-600" />
                     </div>
                     {/* Project Details */}
                     <div className="flex-1 px-3">
-                      <h3 className="text-white text-md">{project?.title}</h3>
+                      <h3 className="dark:text-white text-md">{project?.title}</h3>
                       <p className="text-gray-400 text-sm">Due in {calculateDueInDays(project).daysRemaining} days</p>
                     </div>
                   </div>

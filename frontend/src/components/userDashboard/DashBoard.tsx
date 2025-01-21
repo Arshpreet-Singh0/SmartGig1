@@ -47,7 +47,7 @@ const FreelancerDashBoard = () => {
     fetchActiveProjects();
   }, []);
   return (
-    <div>
+    <div className="bg-gray-50 dark:bg-black-100">
         <Cards projects={projects.length}/>
         <RecentProjects projects={projects}/>
         <Projects projects={projects}/>

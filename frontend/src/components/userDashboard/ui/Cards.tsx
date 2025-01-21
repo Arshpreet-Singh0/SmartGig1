@@ -27,13 +27,13 @@ interface props {
 
 export const Card : React.FC<props>  = ({heading, number, icon}) => {
     return (
-        <div className="bg-black-200 h-28 rounded-lg border border-gray-700 p-4">
+        <div className="bg-white dark:bg-black-200 h-28 rounded-lg border dark:border-gray-700 p-4">
             <div className="flex justify-between items-center">
                 <div>
-                    <p className="text-[#747474] text-sm">{heading}</p>
-                    <h1 className="text-white text-3xl mt-1">{number}</h1>
+                    <p className="dark:text-[#747474] text-sm">{heading}</p>
+                    <h1 className="dark:text-white text-3xl mt-1">{number}</h1>
                 </div>
-                <div className="bg-[#333333] rounded-lg p-3">
+                <div className="bg-gray-200 dark:bg-[#333333] rounded-lg p-3">
                     {icon}
                 </div>
 
