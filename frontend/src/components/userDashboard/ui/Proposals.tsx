@@ -99,7 +99,7 @@ const Proposals = () => {
       <div className="mt-5 border dark:border-gray-700 rounded-lg dark:bg-black-200 ">
         <table className="w-full border-collapse table-auto bg-white dark:bg-black-200 text-white">
           <thead>
-            <tr className="text-sm uppercase text-[#000] bg-white dark:bg-black-200">
+            <tr className="text-sm uppercase text-[#000] bg-white dark:bg-black-200 dark:text-white">
               <th className="px-6 py-4 text-left font-medium">Project</th>
               <th className="px-6 py-4 text-left font-medium">Client</th>
               <th className="px-6 py-4 text-left font-medium">Amount</th>
@@ -112,7 +112,7 @@ const Proposals = () => {
             {proposals.map((proposal, index) => (
               <tr
                 key={proposal.id}
-                className="text-[#000] dark:bg-black-200 hover:bg-gray-700 transition border-t border-gray-700"
+                className="text-[#000] dark:bg-black-200 hover:bg-gray-700 transition border-t border-gray-700 dark:text-white"
               >
                 {/* Project Details */}
                 <td className="px-6 py-4 text-left">

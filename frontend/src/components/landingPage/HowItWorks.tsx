@@ -11,26 +11,26 @@ const HowItWorks = () => {
   return (
     <div className="text-white pb-20 bg-gray-100 dark:bg-black-200 pt-10">
       <h1 className="text-4xl text-center font-semibold dark:text-white text-[#000]">How It Works</h1>
-      <p className="text-gray-400 text-md text-center mt-4">
+      <p className="text-gray-500 text-md text-center mt-4">
         Simple steps to start your journey with FreelanceHub - whether you're
         hiring or looking <br /> for work.
       </p>
 
       <div className="flex flex-wrap justify-center lg:justify-between w-full lg:w-[70%] h-auto mx-auto mt-10 gap-8 px-4 lg:px-14">
         <Card
-          icon={<Clipboard className="text-[#6366F1]" />}
+          icon={<Clipboard className="text-blue-600" />}
           heading="Post a Project"
           description="Describe your project in detail, including requirements, timeline, and budget."
           visible
         />
         <Card
-          icon={<BriefcaseBusiness className="text-[#6366F1]" />}
+          icon={<BriefcaseBusiness className="text-blue-600" />}
           heading="Submit Proposals"
           description="Browse available projects and submit your best proposal to win the work."
           visible
         />
         <Card
-          icon={<PersonStanding className="text-[#6366F1]" />}
+          icon={<PersonStanding className="text-blue-600" />}
           heading="Collaborate"
           description="Work together efficiently with secure payments and communication tools."
           visible
@@ -70,9 +70,9 @@ export const Card: React.FC<props> = ({
         </div>
 
         <h3 className="text-xl mt-3 text-[#000] dark:text-white">{heading}</h3>
-        <p className="mt-4 text-gray-400">{description}</p>
+        <p className="mt-4 text-gray-500">{description}</p>
         {visible && (
-          <p className="flex items-center mt-4 text-sm text-[#6366F1]">
+          <p className="flex items-center mt-4 text-sm text-blue-600">
             Learn More <ChevronRight className="ml-2" width={18} />
           </p>
         )}

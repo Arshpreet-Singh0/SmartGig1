@@ -23,12 +23,12 @@ const HeroSection = () => {
               <Button
                 text="Hire Talent"
                 variant="primary"
-                className="py-3 sm:py-4 px-6 sm:px-8"
+                className="py-3 sm:py-4 px-6 sm:px-8 shadow-2xl font-extrabold"
               />
               <Button
                 text="Find Work"
                 variant="outline"
-                className="py-3 sm:py-4 px-6 sm:px-8 text-[#000] dark:text-white"
+                className="py-3 sm:py-4 px-6 sm:px-8 text-[#000] dark:text-white shadow-2xl font-extrabold"
                 onClick={() => navigate("/projects")}
               />
             </div>
@@ -38,7 +38,7 @@ const HeroSection = () => {
         {/* Right Section */}
         <div className="w-full lg:w-1/2 flex justify-center items-center ">
           <div className="flex justify-center items-center h-64 sm:h-80 lg:h-full w-full rounded-lg bg-[#DDDDDD]">
-            {/* <h1 className="text-3xl sm:text-4xl lg:text-5xl text-gray-400 font-semibold">
+            {/* <h1 className="text-3xl sm:text-4xl lg:text-5xl text-gray-500 font-semibold">
               Platform Preview
             </h1> */}
             <img src="https://lemon.io/wp-content/uploads/2020/03/pic-landing-best-freelance-platf-hero@3x.jpg" className="rounded-lg" alt="" />

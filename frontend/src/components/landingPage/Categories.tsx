@@ -41,7 +41,7 @@ const categories = [
   {
     heading: "Data",
     experts: "300+ Experts",
-    icons: <ChartColumnDecreasing />,
+    icon: <ChartColumnDecreasing />,
     features: ["Data Analysis", "Data Science", "Machine Learning"],
   },
   {
@@ -54,15 +54,15 @@ const categories = [
 
 const Categories = () => {
   return (
-    <div className="text-white">
+    <div className="px-4 bg-gray-100 dark:bg-black-200 text-[#000] dark:text-white">
       <h1 className="text-4xl font-bold text-center">
         Explore Talent Categories
       </h1>
-      <p className="text-center mt-4 text-gray-400">
+      <p className="text-center mt-4 text-gray-500">
         Find experts across various domains to help bring your projects to life
       </p>
 
-      <div className="grid grid-cols-3 w-[70%] mx-auto gap-5 mt-20 px-14">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 w-full sm:w-3/4 lg:w-[70%] mx-auto gap-6 mt-12 sm:mt-16 lg:mt-20">
         {categories?.map((c: any, idx) => (
           <Card
             heading={c.heading}
@@ -74,15 +74,15 @@ const Categories = () => {
         ))}
       </div>
 
-      <div className="flex justify-center mt-12">
+      <div className="flex justify-center mt-8 sm:mt-12">
         <Button
-          text="Browser All Categories"
-          variant="secondary"
-          className="py-4 px-8"
+          text="Browse All Categories"
+          variant="primary"
+          className="py-3 px-6 sm:py-4 sm:px-8 font-extrabold"
         />
       </div>
 
-      <div className="py-16"></div>
+      <div className="py-12 sm:py-16"></div>
     </div>
   );
 };
@@ -97,21 +97,21 @@ interface props {
 }
 const Card: React.FC<props> = ({ heading, experts, features, icon }) => {
   return (
-    <div className="border border-gray-700 rounded-lg p-6">
-      <div className="flex gap-2">
-        <div className="flex justify-center items-center w-12 h-12 rounded-lg bg-[#292951] text-[#6366F1]">
+    <div className="dark:border dark:border-gray-700 rounded-lg p-6 bg-gray-50 shadow-md dark:bg-black-100">
+      <div className="flex gap-3">
+        <div className="flex justify-center items-center w-12 h-12 rounded-lg bg-[#292951] text-blue-600">
           {icon}
         </div>
 
         <div>
           <h2 className="text-lg">{heading}</h2>
-          <p className="text-sm text-gray-400">{experts}</p>
+          <p className="text-sm dark:text-gray-500">{experts}</p>
         </div>
       </div>
       {features?.map((f: string, idx: number) => (
         <li
           key={idx}
-          className={`text-sm text-gray-400 ${idx == 0 ? "mt-4" : "mt-2"} `}
+          className={`text-sm dark:text-gray-500 ${idx === 0 ? "mt-4" : "mt-2"} `}
         >
           {f}
         </li>

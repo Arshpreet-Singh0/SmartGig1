@@ -5,7 +5,7 @@ const MarketPreview = () => {
   return (
     <div className="text-white bg-gray-100 dark:bg-black-200">
       <h1 className="text-4xl font-bold text-center text-[#000] dark:text-white">Marketplace Preview</h1>
-      <p className="text-center mt-4 text-gray-400">
+      <p className="text-center mt-4 text-gray-500">
         Discover top projects and talented freelancers in our diverse
         marketplace
       </p>
@@ -18,7 +18,7 @@ const MarketPreview = () => {
         </div>
       </div>
 
-      <h2 className="flex items-center justify-center text-[#6366F1] mt-10">
+      <h2 className="flex items-center justify-center text-blue-600 mt-10">
         Explore More <ArrowRight className="ml-2" width={18} />
       </h2>
 
@@ -31,7 +31,7 @@ export default MarketPreview;
 
 const FeaturedProjects = () => {
   return (
-    <div className="h-full w-full p-6 bg-gray-50 rounded-lg text-[#000] dark:text-white dark:bg-black-200">
+    <div className="h-full w-full p-6 bg-gray-50 rounded-lg text-[#000] dark:text-white dark:bg-black-200 shadow-md">
       <h1 className="flex items-center text-xl">
         <Clipboard className="text-blue-600 mr-2" /> Featured Projects
       </h1>
@@ -43,7 +43,7 @@ const FeaturedProjects = () => {
             <p className="text-sm">Mobile</p>
           </div>
         </div>
-        <p className="text-sm text-gray-400 mt-2">
+        <p className="text-sm text-gray-500 mt-2">
           Looking for experienced React Native developer
         </p>
         <p className="text-xs text-gray-500 mt-2">
@@ -57,7 +57,7 @@ const FeaturedProjects = () => {
             <p className="text-sm">Web</p>
           </div>
         </div>
-        <p className="text-sm text-gray-400 mt-2">
+        <p className="text-sm text-gray-500 mt-2">
           E-commerce website needs modern UI/UX redesign
         </p>
         <p className="text-xs text-gray-500 mt-2">
@@ -70,9 +70,9 @@ const FeaturedProjects = () => {
 
 const TopFreelancers = () => {
   return (
-    <div className="h-full w-full p-6 bg-gray-50 text-[#000] dark:text-white dark:bg-black-200 rounded-lg">
+    <div className="h-full w-full p-6 bg-gray-50 text-[#000] dark:text-white dark:bg-black-200 rounded-lg shadow-md">
       <h1 className="flex items-center text-xl">
-        <PersonStanding className="text-[#6366F1] mr-2" /> Top Freelancers
+        <PersonStanding className="text-blue-600 mr-2" /> Top Freelancers
       </h1>
 
       <div className="flex flex-wrap items-center border border-gray-700 mt-5 p-3 rounded-lg">
@@ -85,8 +85,8 @@ const TopFreelancers = () => {
         </div>
         <div className="ml-4">
           <h2 className="mt-2">Sarah Johnson</h2>
-          <p className="text-gray-400 text-sm">Full Stack Developer</p>
-          <p className="text-sm text-gray-400">
+          <p className="text-gray-500 text-sm">Full Stack Developer</p>
+          <p className="text-sm text-gray-500">
             <Rate value={5} className="text-sm" /> &nbsp; (4.9)
           </p>
         </div>
@@ -101,8 +101,8 @@ const TopFreelancers = () => {
         </div>
         <div className="ml-4">
           <h2 className="mt-2">Michael Chen</h2>
-          <p className="text-gray-400 text-sm">UI/UX Designer</p>
-          <p className="text-sm text-gray-400">
+          <p className="text-gray-500 text-sm">UI/UX Designer</p>
+          <p className="text-sm text-gray-500">
             <Rate value={5} className="text-sm" /> &nbsp; (4.8)
           </p>
         </div>

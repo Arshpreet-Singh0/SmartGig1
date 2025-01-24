@@ -1,5 +1,6 @@
+import Footer from "../Footer";
 import Navbar from "../navbar/Navbar";
-import Categories from "./categories";
+import Categories from "./Categories";
 import Community from "./Community";
 import HeroSection from "./HeroSection";
 import HowItWorks from "./HowItWorks";
@@ -20,6 +21,7 @@ const HomePage = () => {
    <PlatformFeatures />
    <Community />
    <TrustSafety />
+   <Footer />
    </>
   )
 }
