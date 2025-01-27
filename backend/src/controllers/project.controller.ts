@@ -7,7 +7,7 @@ export const getProject = async (
 ): Promise<void> => {
   try {
     const page = parseInt(req.params.page, 10) || 1; // Ensure `page` is a number, defaulting to 1 if undefined
-    const pageSize = 10;
+    const pageSize = 9;
 
     // Retrieve both the list of projects and the total count
     const [projects, totalProjects] = await prisma.$transaction([

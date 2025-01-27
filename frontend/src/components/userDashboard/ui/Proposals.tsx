@@ -112,7 +112,7 @@ const Proposals = () => {
             {proposals.map((proposal, index) => (
               <tr
                 key={proposal.id}
-                className="text-[#000] dark:bg-black-200 hover:bg-gray-700 transition border-t border-gray-700 dark:text-white"
+                className="text-[#000] dark:bg-black-200 dark:hover:bg-gray-700 border-t border-gray-700 dark:text-white hover:bg-gray-200 transition-all duration-100"
               >
                 {/* Project Details */}
                 <td className="px-6 py-4 text-left">

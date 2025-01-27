@@ -36,11 +36,11 @@ const Navbar = () => {
       {/* Navbar */}
       <div className="flex items-center justify-between h-20 px-6 md:px-12">
         {/* Logo */}
-        <div className="flex items-center">
+        <div className="flex items-center ">
           <img
-            src="/src/assets/smartgig-removebg-preview (1).png"
+            src="https://res.cloudinary.com/djusmuols/image/upload/SmartGig__1_-removebg-preview_tu6unn.png"
             alt="logo"
-            className="w-32 h-20"
+            className="w h-52 "
           />
         </div>
 

@@ -26,9 +26,9 @@ const Pagination = ({ totalResults, resultsPerPage, currentPage, setCurrentPage 
   };
 
   return (
-    <div className="flex items-center justify-center space-x-2 h-20 bg-black-200 text-white">
+    <div className="flex items-center justify-center space-x-2 h-20 bg-gray-50 dark:bg-black-200 text-[#000] dark:text-white fixed bottom-0 w-full">
       <button
-        className="px-4 py-2 border rounded-md hover:bg-gray-200"
+        className="px-4 py-2 border rounded-md dark:hover:bg-gray-200"
         onClick={goToPreviousPage}
         disabled={currentPage === 1}
       >
