@@ -72,7 +72,7 @@ const Form = ({ type, onSubmit, input, onChange }: FormProps) => {
                 id="name"
                 value={input.name}
                 onChange={onChange}
-                classname="bg-gray-50 dark:bg-[#404040] border dark:border-gray-700 focus:ring-gray-700 focus:border-blue-500 w-full text-gray-300"
+                classname="bg-gray-50 dark:bg-[#404040] border dark:border-gray-700 focus:ring-gray-700 focus:border-blue-500 w-full dark:text-gray-300"
               />
             </div>
           )}
@@ -87,7 +87,7 @@ const Form = ({ type, onSubmit, input, onChange }: FormProps) => {
               name="email"
               value={input.email}
               onChange={onChange}
-              classname="dark:bg-[#404040] bg-gray-50 border dark:border-gray-700 focus:ring-gray-700 focus:border-blue-500 w-full text-gray-300"
+              classname="dark:bg-[#404040] bg-gray-50 border dark:border-gray-700 focus:ring-gray-700 focus:border-blue-500 w-full dark:text-gray-300"
             />
           </div>
 
@@ -101,7 +101,7 @@ const Form = ({ type, onSubmit, input, onChange }: FormProps) => {
               name="password"
               value={input.password}
               onChange={onChange}
-              classname="bg-gray-50 dark:bg-[#404040] border dark:border-gray-700 focus:ring-gray-700 focus:border-blue-500 w-full text-gray-300"
+              classname="bg-gray-50 dark:bg-[#404040] border dark:border-gray-700 focus:ring-gray-700 focus:border-blue-500 w-full dark:text-gray-300"
             />
           </div>
 
@@ -112,7 +112,7 @@ const Form = ({ type, onSubmit, input, onChange }: FormProps) => {
               </label>
               <select
                 id="accountType"
-                className="bg-gray-50 dark:bg-[#404040] border border-gray-700 focus:ring-gray-700 focus:border-blue-500 w-full rounded-lg px-3 py-2 dark:text-gray-300"
+                className="bg-gray-50 dark:bg-[#404040] border border-gray-700 focus:ring-gray-700 focus:border-blue-500 w-full rounded-lg px-3 py-2 dark:dark:text-gray-300"
                 value={input.accountType}
                 onChange={onChange}
                 name="accountType"

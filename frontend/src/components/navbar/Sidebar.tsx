@@ -36,7 +36,7 @@ const Sidebar = () => {
           <a href={"#projects"} className="text-sm">
             <div
               className={`flex items-center px-3 py-[0.75rem] rounded-lg text-[#000] dark:text-white ${
-                selected == 2 ? "bg-[#404040]" : ""
+                selected == 2 ? "dark:bg-[#404040] bg-gray-200" : ""
               } dark:hover:bg-[#404040] hover:bg-gray-200`}
               onClick={() => setSlected(2)}
             >
@@ -46,7 +46,7 @@ const Sidebar = () => {
           </a>
           <div
             className={`flex items-center px-3 py-[0.75rem] rounded-lg text-[#000] dark:text-white ${
-              selected == 3 ? "bg-[#404040]" : ""
+              selected == 3 ? "dark:bg-[#404040] bg-gray-200" : ""
             } dark:hover:bg-[#404040] hover:bg-gray-200`}
             onClick={() => setSlected(3)}
           >
@@ -56,7 +56,7 @@ const Sidebar = () => {
           <a href="#Proposals" className="text-sm">
             <div
               className={`flex items-center px-3 py-[0.75rem] rounded-lg text-[#000] dark:text-white ${
-                selected == 4 ? "bg-[#404040]" : ""
+                selected == 4 ? "dark:bg-[#404040] bg-gray-200" : ""
               } dark:hover:bg-[#404040] hover:bg-gray-200`}
               onClick={() => setSlected(4)}
             >
@@ -70,7 +70,7 @@ const Sidebar = () => {
         <>
           <div
             className={`flex items-center px-3 py-[0.75rem] rounded-lg text-[#000] dark:text-white ${
-              selected == 1 ? "bg-[#404040]" : ""
+              selected == 1 ? "dark:bg-[#404040] bg-gray-200" : ""
             } dark:hover:bg-[#404040] hover:bg-gray-200`}
             onClick={() => setSlected(1)}
           >
@@ -80,7 +80,7 @@ const Sidebar = () => {
           <a href={"#projects"} className="text-sm">
             <div
               className={`flex items-center px-3 py-[0.75rem] rounded-lg text-[#000] dark:text-white ${
-                selected == 2 ? "bg-[#404040]" : ""
+                selected == 2 ? "dark:bg-[#404040] bg-gray-200" : ""
               } dark:hover:bg-[#404040] hover:bg-gray-200`}
               onClick={() => setSlected(2)}
             >
@@ -90,7 +90,7 @@ const Sidebar = () => {
           </a>
           <div
             className={`flex items-center px-3 py-[0.75rem] rounded-lg text-[#000] dark:text-white ${
-              selected == 3 ? "bg-[#404040]" : ""
+              selected == 3 ? "dark:bg-[#404040] bg-gray-200" : ""
             } dark:hover:bg-[#404040] hover:bg-gray-200`}
             onClick={() => navigate("/post-project")}
           >
@@ -100,7 +100,7 @@ const Sidebar = () => {
           <a href={"#projects"} className="text-sm">
             <div
               className={`flex items-center px-3 py-[0.75rem] rounded-lg text-[#000] dark:text-white ${
-                selected == 4 ? "bg-[#404040]" : ""
+                selected == 4 ? "dark:bg-[#404040] bg-gray-200" : ""
               } dark:hover:bg-[#404040] hover:bg-gray-200`}
               onClick={() => setSlected(4)}
             >
@@ -110,17 +110,17 @@ const Sidebar = () => {
           </a>
           <div
             className={`flex items-center px-3 py-[0.75rem] rounded-lg text-[#000] dark:text-white ${
-              selected == 5 ? "bg-[#404040]" : ""
+              selected == 5 ? "dark:bg-[#404040] bg-gray-200" : ""
             } dark:hover:bg-[#404040] hover:bg-gray-200`}
             onClick={() => setSlected(5)}
           >
             <MessageSquareMore className="mr-4" width={22} />
             <p className="text-sm">Messages</p>
           </div>
-          <a href="#Proposals" className="text-sm">
+          <a href="#payments" className="text-sm">
             <div
               className={`flex items-center px-3 py-[0.75rem] rounded-lg text-[#000] dark:text-white ${
-                selected == 6 ? "bg-[#404040]" : ""
+                selected == 6 ? "dark:bg-[#404040] bg-gray-200" : ""
               } dark:hover:bg-[#404040] hover:bg-gray-200`}
               onClick={() => setSlected(6)}
             >

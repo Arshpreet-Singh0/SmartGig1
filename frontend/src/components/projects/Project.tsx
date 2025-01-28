@@ -4,7 +4,7 @@ import ProjectCard from "./ProjectCard"
 
 const Project = ({projects, currentPage, setCurrentPage, totalProjects}:any) => {
   return (
-    <>
+    <div className="w-[85%] mx-auto">
     {/* <Categories /> */}
     <div className="flex items-center justify-center flex-col sm:flex-row gap-4 h-20 bg-gray-50 p-5 dark:bg-black-100">
           <div className="flex-1 relative">
@@ -30,7 +30,7 @@ const Project = ({projects, currentPage, setCurrentPage, totalProjects}:any) => 
     </div>
 
     <Pagination totalResults={totalProjects} resultsPerPage={9} currentPage={currentPage} setCurrentPage={setCurrentPage}/>
-    </>
+    </div>
   )
 }
 

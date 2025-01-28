@@ -31,7 +31,7 @@ const ProjectCard = ({ project }: any) => {
       </div>
 
       <div className="flex flex-wrap gap-2 mb-4 mt-2">
-        {project?.skillsRequired?.map((skill: string) => (
+        {project?.skillsRequired?.slice(0,4).map((skill: string) => (
           <span
             key={skill}
             className="bg-blue-50 text-blue-700 text-sm px-3 py-1 rounded-full"

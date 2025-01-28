@@ -23,7 +23,7 @@ const routes = createBrowserRouter([
           { path: "/signin", element: <SigninPage /> },
           { path: "/signup", element: <SignupPage /> },
           { path: "/profile", element: <ProfilePage />},
-          { path: "/projects", element: <DashBaordPage><JobPage /></DashBaordPage>},
+          { path: "/projects", element: <JobPage />},
           { path: "/dashboard", element: <DashBaordPage><DashBoard /></DashBaordPage>},
           { path: "/place-bid/:projectId", element: <PlaceBid />},
           { path: "/view-bid/:projectId", element: <ViewProposal />},

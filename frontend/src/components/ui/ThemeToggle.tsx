@@ -13,10 +13,10 @@ const ThemeToggle = () => {
     const root = document.documentElement;
     if (theme === "dark") {
       root.classList.add("dark");
-      root.style.backgroundColor = "#000000"; 
+      root.style.backgroundColor = "#171717"; 
     } else {
       root.classList.remove("dark");
-      root.style.backgroundColor = "#fff";
+      root.style.backgroundColor = "#F9FAFB";
     }
     localStorage.setItem("theme", theme);
   }, [theme]);
