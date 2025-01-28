@@ -1,5 +1,6 @@
-import { configureStore, combineReducers } from '@reduxjs/toolkit'
+import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import authSlice from './authSlice';
+import { themeSlice } from './themeSlice';
 import {
   persistReducer,
   FLUSH,
@@ -8,23 +9,21 @@ import {
   PERSIST,
   PURGE,
   REGISTER,
-} from "redux-persist";
-import storage from "redux-persist/lib/storage";
-// ...
+} from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 
 const persistConfig = {
-  key: "root",
+  key: 'root',
   version: 1,
   storage,
 };
 
-
 const rootReducer = combineReducers({
-  auth: authSlice,
+  auth: authSlice, // Use the reducer from authSlice
+  theme: themeSlice.reducer, // Use the reducer from themeSlice
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
-
 
 const store = configureStore({
   reducer: persistedReducer,
@@ -38,8 +37,7 @@ const store = configureStore({
 
 export default store;
 
-// Infer the `RootState`,  `AppDispatch`, and `AppStore` types from the store itself
-export type RootState = ReturnType<typeof store.getState>
-// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
-export type AppDispatch = typeof store.dispatch
-export type AppStore = typeof store
+// Infer the `RootState`, `AppDispatch`, and `AppStore` types from the store itself
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
+export type AppStore = typeof store;

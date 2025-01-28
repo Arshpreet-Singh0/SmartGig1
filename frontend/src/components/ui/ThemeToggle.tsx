@@ -1,10 +1,13 @@
 import { SunMoon } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect} from "react";
+import { useAppSelector } from "../../hooks/hook";
+import { useDispatch } from "react-redux";
+import { toggleTheme } from "../../redux/themeSlice";
 
 const ThemeToggle = () => {
-  const [theme, setTheme] = useState(
-    localStorage.getItem("theme") || "light"
-  );
+  const {theme} = useAppSelector(store=>store.theme);
+  const dispatch = useDispatch();
+
 
   useEffect(() => {
     const root = document.documentElement;
@@ -18,13 +21,13 @@ const ThemeToggle = () => {
     localStorage.setItem("theme", theme);
   }, [theme]);
 
-  const toggleTheme = () => {
-    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
+  const toggleThemeLocal = () => {
+    dispatch(toggleTheme())
   };
 
   return (
     <button
-      onClick={toggleTheme}
+      onClick={toggleThemeLocal}
       className="p-2 text-black text-white"
     >
       <SunMoon className="opacity-80 text-[#000] dark:text-white"/>

@@ -16,7 +16,7 @@ const HowItWorks = () => {
         hiring or looking <br /> for work.
       </p>
 
-      <div className="flex flex-wrap justify-center lg:justify-between w-full lg:w-[70%] h-auto mx-auto mt-10 gap-8 px-4 lg:px-14">
+      <div className="flex flex-wrap items-center justify-center xl:justify-between w-full xl:w-[70%] h-auto mx-auto mt-10 gap-8 px-4 xl:px-14">
         <Card
           icon={<Clipboard className="text-blue-600" />}
           heading="Post a Project"

@@ -1,22 +1,18 @@
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
-const Pagination = ({ totalResults, resultsPerPage, currentPage, setCurrentPage }:any) => {
+const Pagination = ({ totalResults, resultsPerPage, currentPage, setCurrentPage }: any) => {
   const totalPages = Math.ceil(totalResults / resultsPerPage);
 
-  const getPaginationGroup = () => {
-    let start = Math.floor((currentPage - 1) / 5) * 5;
-    return new Array(5).fill(0).map((_, idx) => start + idx + 1);
-  };
-
-  const changePage = (page:number) => {
+  const changePage = (page: number) => {
     setCurrentPage(page);
   };
 
   const goToNextPage = () => {
-    setCurrentPage((page:number) => page + 1);
+    setCurrentPage((page: number) => page + 1);
   };
 
   const goToPreviousPage = () => {
-    setCurrentPage((page:number) => page - 1);
+    setCurrentPage((page: number) => page - 1);
   };
 
   const getPaginatedData = () => {
@@ -26,33 +22,48 @@ const Pagination = ({ totalResults, resultsPerPage, currentPage, setCurrentPage 
   };
 
   return (
-    <div className="flex items-center justify-center space-x-2 h-20 bg-gray-50 dark:bg-black-200 text-[#000] dark:text-white fixed bottom-0 w-full">
+    <div className="flex items-center justify-end space-x-2 h-20 bg-gray-50 dark:bg-black-200 text-[#000] dark:text-white px-10 fixed bottom-0 w-full pr-72">
+      {/* Previous Button */}
       <button
         className="px-4 py-2 border rounded-md dark:hover:bg-gray-200"
         onClick={goToPreviousPage}
         disabled={currentPage === 1}
       >
-        Previous
+        <ChevronLeft />
       </button>
 
-      {getPaginationGroup().map((item, index) => (
-        item <= totalPages && (
-          <button
-            key={index}
-            className={`px-4 py-2 border rounded-md ${item === currentPage ? 'bg-[#2463EB] text-white' : 'hover:bg-gray-200'}`}
-            onClick={() => changePage(item)}
-          >
-            {item}
-          </button>
-        )
-      ))}
+      {/* Previous Page */}
+      {currentPage > 1 && (
+        <button
+          className="px-4 py-2 border rounded-md hover:bg-gray-200"
+          onClick={() => changePage(currentPage - 1)}
+        >
+          {currentPage - 1}
+        </button>
+      )}
 
+      {/* Current Page */}
+      <button className="px-4 py-2 border rounded-md bg-[#2463EB] text-white">
+        {currentPage}
+      </button>
+
+      {/* Next Page */}
+      {currentPage < totalPages && (
+        <button
+          className="px-4 py-2 border rounded-md hover:bg-gray-200"
+          onClick={() => changePage(currentPage + 1)}
+        >
+          {currentPage + 1}
+        </button>
+      )}
+
+      {/* Next Button */}
       <button
         className="px-4 py-2 border rounded-md hover:bg-gray-200"
         onClick={goToNextPage}
         disabled={currentPage === totalPages}
       >
-        Next
+        <ChevronRight />
       </button>
 
       <div>

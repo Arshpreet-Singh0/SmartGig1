@@ -14,6 +14,8 @@ const Navbar = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const dropdownRef = useRef(null);
 
+    const { theme } = useAppSelector(store=>store.theme);
+
   useEffect(() => {
     const handleClickOutside = (event: any) => {
       //@ts-ignore
@@ -32,13 +34,13 @@ const Navbar = () => {
   const toggleSidebar = () => setSidebarOpen(!sidebarOpen);
 
   return (
-    <div className="sticky top-0 z-50 bg-white dark:bg-[#171717] shadow text-black dark:text-white">
+    <div className="sticky top-0 z-50 bg-white dark:bg-[#171717] ext-black dark:text-white shadow-md">
       {/* Navbar */}
       <div className="flex items-center justify-between h-20 px-6 md:px-12">
         {/* Logo */}
         <div className="flex items-center ">
           <img
-            src="https://res.cloudinary.com/djusmuols/image/upload/SmartGig__1_-removebg-preview_tu6unn.png"
+            src={theme=="light" ? "https://res.cloudinary.com/djusmuols/image/upload/SmartGig__1_-removebg-preview_tu6unn.png" : "https://res.cloudinary.com/djusmuols/image/upload/SmartGig__3_-removebg-preview_szswyw.png"}
             alt="logo"
             className="w h-52 "
           />

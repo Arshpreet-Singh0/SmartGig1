@@ -97,7 +97,7 @@ interface props {
 }
 const Card: React.FC<props> = ({ heading, experts, features, icon }) => {
   return (
-    <div className="dark:border dark:border-gray-700 rounded-lg p-6 bg-gray-50 shadow-md dark:bg-black-100">
+    <div className="rounded-lg p-6 bg-gray-50 shadow-md dark:bg-black-100">
       <div className="flex gap-3">
         <div className="flex justify-center items-center w-12 h-12 rounded-lg bg-[#292951] text-blue-600">
           {icon}
