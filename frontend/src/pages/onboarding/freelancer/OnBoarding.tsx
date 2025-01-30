@@ -1,5 +1,5 @@
-import Navbar from "../../components/navbar/Navbar";
-import OnboardindForm from "../../components/onbarding/OnboardingForm";
+import Navbar from "../../../components/navbar/Navbar";
+import OnboardindForm from "../../../components/onbarding/OnboardingForm";
 
 const OnboardingForm = () => {
   

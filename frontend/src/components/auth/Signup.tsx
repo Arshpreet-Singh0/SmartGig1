@@ -34,6 +34,9 @@ const Signup = () => {
                 if(input.accountType==="FREELANCER"){
                     naviagte('/freelancer/onboarding')
                 }
+                else{
+                    naviagte('/client/onboarding');
+                }
             }
             
         } catch (error) {

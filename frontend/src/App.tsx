@@ -13,7 +13,8 @@ import ViewProposal from "./pages/dashboard/proposal/ViewProposal";
 import EditProposal from "./pages/dashboard/proposal/EditProposal";
 import PostProject from "./pages/client/PostProject";
 import ViewProjectDetails from "./pages/projects/ViewProjectDetails";
-import OnboardingForm from "./pages/onboarding/OnBoarding";
+import OnboardingForm from "./pages/onboarding/freelancer/OnBoarding";
+import ClientOnboardingForm from "./pages/onboarding/client/ClientOnBaording";
 
 const routes = createBrowserRouter([
   {
@@ -32,6 +33,7 @@ const routes = createBrowserRouter([
           { path: "/post-project", element: <DashBaordPage><PostProject /></DashBaordPage>},
           { path: "/view-deatils/:projectId", element: <DashBaordPage><ViewProjectDetails /></DashBaordPage>},
           { path: "/freelancer/onboarding", element: <OnboardingForm />},
+          { path: "/client/onboarding", element: <ClientOnboardingForm/>},
           { path: "*", element: <NotFound />},
     ],
   },
