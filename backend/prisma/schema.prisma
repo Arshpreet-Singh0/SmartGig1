@@ -28,26 +28,28 @@ model User {
   linkedInUrl    String?
   githubUrl      String?
   portfolioUrl   String?
+  skills         String[]
+  yearOfExperience Int?
+  HourlyRate  Int?
+  availability String?
 
-  projectsCompleted Int       @default(0) // Already in the schema
-  totalEarnings      Float     @default(0.0) // Add this to track earnings
+  projectsCompleted Int   @default(0) // Already in the schema
+  totalEarnings     Float @default(0.0) // Add this to track earnings
 
-  rating            Float     @default(0.0)
-  ratingCount       Int       @default(0)
-  createdAt         DateTime  @default(now())
-  updatedAt         DateTime? @updatedAt
-  isEmailVerified   Boolean   @default(false)
-  isPhoneVerified   Boolean   @default(false)
+  rating          Float     @default(0.0)
+  ratingCount     Int       @default(0)
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime? @updatedAt
+  isEmailVerified Boolean   @default(false)
+  isPhoneVerified Boolean   @default(false)
 
   // Relations
   projects         Project[]   @relation("ClientProjects")
   assignedProjects Project[]   @relation("FreelancerProjects")
   proposals        Proposal[]
   education        Education[]
-  skills           Skills[]
   languages        Languages[]
 }
-
 
 model Education {
   id          Int    @id @default(autoincrement())
@@ -57,15 +59,6 @@ model Education {
   endYear     String
   User        User?  @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId      Int?
-}
-
-model Skills {
-  id     Int      @id @default(autoincrement())
-  domain String
-  skills String[]
-
-  User   User? @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId Int?
 }
 
 model Languages {

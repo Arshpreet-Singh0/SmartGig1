@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { message } from "antd";
 import PlaceBidForm from "../../../components/ui/PlaceBidForm";
+import Navbar from "../../../components/navbar/Navbar";
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 const PlaceBid = () => {
@@ -48,6 +49,7 @@ const PlaceBid = () => {
 
   return (
     <>
+    <Navbar />
     <PlaceBidForm input={input} handleChange={handleChange} handleSubmit={handleSubmit} />
     </>
   );

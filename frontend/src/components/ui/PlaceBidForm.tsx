@@ -55,11 +55,11 @@ const PlaceBidForm: React.FC<propsType> = ({
     navigate(`/bid/edit/${project?.id}`)
   }
   return (
-    <div className="w-[80%] mx-auto text-white p-5">
+    <div className="w-[80%] mx-auto dark:text-white p-5">
       <h1 className="text-2xl font-semibold">{editForm ? 'Edit Proposal' : 'Submit Proposal'}</h1>
       <p className="opacity-75 text-sm mt-1">Project : {project?.title}</p>
 
-      <div className="grid grid-cols-3 border border-gray-700 rounded-lg mt-8 p-5 bg-black-200">
+      <div className="grid grid-cols-3 shadow-md rounded-lg mt-8 p-5 dark:bg-black-200 bg-white">
         <div className="px-5">
           <p className="opacity-70 text-sm">Client Budget : </p>
           <p className="text-lg font-bold text-green-500">
@@ -77,7 +77,7 @@ const PlaceBidForm: React.FC<propsType> = ({
         </div>
       </div>
 
-      <div className="mt-8 border border-gray-700 rounded-lg p-5 bg-black-200">
+      <div className="mt-8 shadow-md rounded-lg p-5 dark:bg-black-200 bg-white">
         <form onSubmit={disabled==true ? handleEditForm : handleSubmit} >
           <label htmlFor="" className="text-sm">
             Your bid amount :{" "}
@@ -86,7 +86,7 @@ const PlaceBidForm: React.FC<propsType> = ({
             <p className="text-2xl ">&#8377;</p>
             <div className="flex-1">
               <Input
-                classname="bg-[#404040] border-gray-700 w-full mt-1"
+                classname="bg-gray-50 dark:bg-[#404040] border-gray-700 w-full mt-1"
                 type="number"
                 placeholder="Enter your bid amount"
                 name="proposedBudget"
@@ -102,7 +102,7 @@ const PlaceBidForm: React.FC<propsType> = ({
               Estimated Duration :{" "}
             </label>
             <Input
-              classname="bg-[#404040] border-gray-700 w-full mt-1"
+              classname="bg-gray-50 dark:bg-[#404040] border-gray-700 w-full mt-1"
               placeholder="Enter estimated duration (In Days)"
               name="proposedTimeline"
               value={input.proposedTimeline}
@@ -115,7 +115,7 @@ const PlaceBidForm: React.FC<propsType> = ({
               Cover Letter :{" "}
             </label>
             <textarea
-              className="bg-[#404040] border-gray-700 w-full mt-4 rounded-lg p-3"
+              className="bg-gray-50 dark:bg-[#404040] border-gray-700 w-full mt-4 rounded-lg p-3"
               rows={6}
               placeholder="Explain why you are best fit for this project..."
               name="coverLetter"

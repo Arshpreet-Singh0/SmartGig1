@@ -215,13 +215,13 @@ const Proposals = () => {
                 <td className="px-6 py-4">
                   <div className="flex items-center gap-3">
                     <FaEye
-                      className="text-gray-400 hover:text-gray-200 cursor-pointer"
+                      className="text-gray-400 cursor-pointer"
                       onClick={() =>
                         navigate(`/view-bid/${proposal?.project?.id}`)
                       }
                     />
                     <FaEdit
-                      className="text-gray-400 hover:text-gray-200 cursor-pointer"
+                      className="text-gray-400 cursor-pointer"
                       onClick={() =>
                         navigate(`/bid/edit/${proposal?.project?.id}`)
                       }

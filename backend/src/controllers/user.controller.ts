@@ -12,7 +12,7 @@ export const signup = async (req: Request, res: Response): Promise<void> => {
       return;
     }
 
-    const user = await prisma.user.findFirst({
+    let user = await prisma.user.findFirst({
       where: {
         email: email,
       },
@@ -28,7 +28,7 @@ export const signup = async (req: Request, res: Response): Promise<void> => {
 
     const hashedPassword = await bcryptjs.hash(password, 5);
 
-    await prisma.user.create({
+    user = await prisma.user.create({
       data: {
         name,
         email,
@@ -37,8 +37,27 @@ export const signup = async (req: Request, res: Response): Promise<void> => {
       },
     });
 
-    res.status(200).json({
+    const token = jwt.sign({ userId: user.id }, secretKey, {
+      expiresIn: "7d",
+    });
+
+    const constructedUser = {
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      accountType : user.accountType,
+    }
+
+
+    res.status(200)
+    .cookie("token", token, {
+      maxAge: 1 * 24 * 60 * 60 * 1000,
+      httpOnly: true,
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax", 
+      secure: process.env.NODE_ENV === "production", 
+    }).json({
       message: "Account created successfully.",
+      user : constructedUser,
       success: true,
     });
   } catch (error) {
@@ -120,6 +139,8 @@ export const updateUserProfile = async (req: Request, res: Response): Promise<vo
     location,
     responseTime,
     profilePicture,
+    hourlyRate,
+    availability,
     role,
     education,
     skills
@@ -141,6 +162,8 @@ export const updateUserProfile = async (req: Request, res: Response): Promise<vo
         name,
         about,
         location,
+        HourlyRate : hourlyRate,
+        availability,
         role,
         responseTime,
         profilePicture,
@@ -148,34 +171,12 @@ export const updateUserProfile = async (req: Request, res: Response): Promise<vo
           deleteMany: {}, 
           create: education // Add new education records
         },
-        skills: {
-          deleteMany: {},
-          create: skills.map((skill : any) => ({
-            domain: skill.domain,
-            skills: { set: skill.skills } // Using 'set' for array fields
-          }))
-        }
-      },
-      select : {
-        id : true,
-        name : true,
-        about : true,
-        location : true,
-        role : true,
-        email : true,
-        responseTime : true,
-        projectsCompleted : true,
-        profilePicture : true,
-        education : true,
-        rating : true,
-        ratingCount : true,
-        skills : true
-      },
-      
+        skills: skills
+      }
     });
 
     res.status(200).json({
-      updatedUser,
+      message : 'Profile Updated Successfully.',
       success : true
     });
   } catch (error) {
