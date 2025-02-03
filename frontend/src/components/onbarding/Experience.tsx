@@ -12,7 +12,7 @@ const Experience = ({profile, updateProfile} : {
               <Briefcase className="w-5 h-5" />
               Work Experience
             </h2>
-            {profile.experience.map((exp: any, index: number) => (
+            {profile?.experience?.map((exp: any, index: number) => (
               <div key={index} className="space-y-4 p-4 border rounded-lg">
                 <div>
                   <label className="block text-sm font-medium text-gray-700">

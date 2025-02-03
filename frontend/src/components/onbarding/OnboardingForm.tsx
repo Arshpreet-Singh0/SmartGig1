@@ -1,11 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   ChevronLeft,
   ChevronRight,
-  Briefcase,
 } from "lucide-react";
 import type { FreelancerProfile } from "../../types/types";
-import { Input } from "../ui/Input";
 import axios from "axios";
 import { BACKEND_URL } from "../../Congfig";
 import { message } from "antd";
@@ -44,6 +42,26 @@ const OnboardindForm = () => {
     const skillsArray = input.split(",").map((skill) => skill.trim());
     updateProfile({ skills: skillsArray });
   };
+
+  useEffect(()=>{
+    const getUser = async()=>{
+        
+        try {
+            const res = await axios.get(`${BACKEND_URL}/api/v1/user`, {
+                withCredentials : true
+            });
+            console.log(res);
+            
+            if(res?.data?.success){
+                setProfile(res?.data?.user);
+            }
+        } catch (error) {
+            console.log(error);
+            
+        }
+    };
+    getUser();
+  },[]);
 
     const handleNext = () => setStep((prev) => Math.min(prev + 1, prev+1));
   const handleBack = () => setStep((prev) => Math.max(prev - 1, 1));
@@ -127,7 +145,7 @@ const OnboardindForm = () => {
                 </div>
               </div>
     
-              <form onSubmit={handleSubmit}>
+              <div>
                 {renderStep()}
     
                 <div className="mt-8 flex justify-between">
@@ -145,6 +163,7 @@ const OnboardindForm = () => {
                     {step == 4 ? (
                       <button
                         type="submit"
+                        onClick={handleSubmit}
                         className="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700"
                       >
                         Complete Profile
@@ -161,7 +180,7 @@ const OnboardindForm = () => {
                     )}
                   </div>
                 </div>
-              </form>
+              </div>
             </div>
           </div>
         </div>

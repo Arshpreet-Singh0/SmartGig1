@@ -6,13 +6,15 @@ const Eduation = ({profile, updateProfile} : {
     profile : FreelancerProfile,
     updateProfile : (updates: Partial<FreelancerProfile>)=>void
 }) => {
+  console.log(profile.education);
+  
   return (
     <div className="space-y-4">
             <h2 className="text-xl font-semibold flex items-center gap-2">
               <GraduationCap className="w-5 h-5" />
               Education
             </h2>
-            {profile.education.map((edu: any, index: number) => (
+            {profile?.education?.map((edu: any, index: number) => (
               <div key={index} className="space-y-4 p-4 border rounded-lg">
                 <div>
                   <label className="block text-sm font-medium text-gray-700">

@@ -145,7 +145,6 @@ export const updateUserProfile = async (req: Request, res: Response): Promise<vo
     education,
     skills
   } = req.body;
-
   try {
     const userExists = await prisma.user.findUnique({
       where: { id: Number(userId) },
@@ -156,6 +155,8 @@ export const updateUserProfile = async (req: Request, res: Response): Promise<vo
       return;
     }
 
+    const updatedEducation: EducationInput[] = education.map(({ id, userId, ...rest }: { id?: number; userId?: number } & EducationInput) => rest);
+    
     await prisma.user.update({
       where: { id: Number(userId) },
       data: {
@@ -169,7 +170,7 @@ export const updateUserProfile = async (req: Request, res: Response): Promise<vo
         profilePicture,
         education: {
           deleteMany: {}, 
-          create: education // Add new education records
+          create: updatedEducation
         },
         skills: skills
       }
@@ -206,7 +207,7 @@ export const updateClientProfile = async (req: Request, res: Response): Promise<
       return;
     }
 
-    await prisma.user.update({
+    const user = await prisma.user.update({
       where: { id: Number(userId) },
       data: {
         name,
@@ -218,7 +219,6 @@ export const updateClientProfile = async (req: Request, res: Response): Promise<
         profilePicture,
       }
     });
-
     res.status(200).json({
       message : 'Profile Updated Successfully.',
       success : true
@@ -229,7 +229,7 @@ export const updateClientProfile = async (req: Request, res: Response): Promise<
   }
 };
 
-export const getUserProfile = async (req:Request, res:Response)=>{
+export const getUserProfilebyId = async (req:Request, res:Response)=>{
   const userId = req.params.id;
 
   try {
@@ -261,4 +261,45 @@ export const getUserProfile = async (req:Request, res:Response)=>{
     res.status(500).send({ message: "Error updating user profile", error });
   }
 
+}
+export const getUserProfile = async (req:Request, res:Response)=>{
+  const userId = req.userId;
+
+  try {
+    const user = await prisma.user.findUnique({
+      where: { id: Number(userId) },
+      select: {
+        id: true,
+        name: true,
+        about: true,
+        location: true,
+        role: true,
+        email : true,
+        companyName : true,
+        position : true,
+        website : true,
+        industry : true,
+        education: true,
+        skills: true,
+        yearOfExperience : true,
+        HourlyRate : true,
+    },
+  });
+
+  res.status(200).json({
+    user,
+    success : true
+  });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({ message: "Error updating user profile", error });
+  }
+
+}
+
+interface EducationInput {
+  institution: string;
+  degree: string;
+  startYear: string;
+  endYear: string;
 }
