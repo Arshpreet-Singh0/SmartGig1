@@ -40,8 +40,8 @@ model User {
   website     String?
   
 
-  projectsCompleted Int   @default(0) // Already in the schema
-  totalEarnings     Float @default(0.0) // Add this to track earnings
+  projectsCompleted Int   @default(0)
+  totalEarnings     Float @default(0.0)
 
   rating          Float     @default(0.0)
   ratingCount     Int       @default(0)

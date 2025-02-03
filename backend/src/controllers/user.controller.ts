@@ -156,7 +156,7 @@ export const updateUserProfile = async (req: Request, res: Response): Promise<vo
       return;
     }
 
-    const updatedUser = await prisma.user.update({
+    await prisma.user.update({
       where: { id: Number(userId) },
       data: {
         name,
@@ -172,6 +172,50 @@ export const updateUserProfile = async (req: Request, res: Response): Promise<vo
           create: education // Add new education records
         },
         skills: skills
+      }
+    });
+
+    res.status(200).json({
+      message : 'Profile Updated Successfully.',
+      success : true
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({ message: "Error updating user profile", error });
+  }
+};
+export const updateClientProfile = async (req: Request, res: Response): Promise<void> => {
+  const userId = req.userId;
+  const {
+    name,
+    companyName,
+    position,
+    location,
+    industry,
+    website,
+    profilePicture
+  } = req.body;
+
+  try {
+    const userExists = await prisma.user.findUnique({
+      where: { id: Number(userId) },
+    });
+
+    if (!userExists) {
+      res.status(404).send({ message: "User not found" });
+      return;
+    }
+
+    await prisma.user.update({
+      where: { id: Number(userId) },
+      data: {
+        name,
+        location,
+        companyName,
+        position,
+        industry,
+        website,
+        profilePicture,
       }
     });
 

@@ -5,7 +5,6 @@ import {
   Building2,
   Briefcase,
   Clock,
-  DollarSign,
 } from "lucide-react";
 import type { ClientProfile } from "../../../types/types";
 import { Input } from "../../../components/ui/Input";
